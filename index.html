@@ -83,8 +83,7 @@
               <li><a href="contact-weaver-barns.php">Contact<br />
                 Weaver Barns</a></li>
               <!-- <li><a href="locate-a-dealer.php">Locate<br /> A Dealer</a></li> -->
-              <li><a href="get-a-catalog.php">Get a Catalog</a></li>
-              <!-- <li><a href="get-a-quote.php">Get a Quote</a></li> -->
+              <li><a href="get-a-catalog.php">Get a Catalog</a></li> <!-- <li><a href="get-a-quote.php">Get a Quote</a></li> -->
             </ul>
           </li>
           <li id="testimonials"><a href="testimonials.php">Testimonials</a></li>
@@ -92,9 +91,20 @@
       </div>
       <script type="text/javascript">
 var MenuBar1 = new Spry.Widget.MenuBar("MenuBar1", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
-  </script>    <div id="main">
+  </script>    <form id="main">
+
     <!-- main content here -->  
+    <div class="radio-option">
+        <input id="male" type="radio" value="male"/>
+        <label for="male">Male</label>
     </div>
+
+    <div class="checkbox-option">
+        <input id="single" type="checkbox" value="single"/>
+        <label for="single">Single</label>
+    </div>
+
+    </form>
     <div id="greendivider"> </div>
      <div id="bottom">
       <div class="clear"></div>  </div>
