@@ -7,6 +7,19 @@ $(document).ready(function(){
         appendBarnRadioButton(barn_dimensions[i], '#dimensions .col.c2');
     }
 
+    $('form#main > section').not(':first').hide();
+
+    $('button.next').not('.disabled').click(function(event){
+        event.preventDefault();
+        $(this).parent().slideUp();
+        $(this).parent().nextAll('section').first().slideDown();
+    });
+
+    $('form#main h2').click(function(){
+        $('form#main > section').slideUp();
+        $(this).next().slideDown();
+    });
+
     $('.radio-option').hover(
         function(){
             var width = $(this).attr('data-width-feet');

@@ -63,17 +63,20 @@ form#main {
     font-size: 1.5em;
     text-transform: uppercase;
     padding-left: 0.5em;
-    border-bottom: rgba(0, 0, 0, 0.5); }
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    cursor: pointer; }
   form#main h3 {
     font-size: 1.2em;
     font-weight: bold; }
+    .checkbox-option + form#main h3 {
+      margin-top: 1em; }
   form#main section {
     margin: 1em;
     clear: both;
     overflow: hidden; }
     form#main section .col {
       float: left;
-      margin: 0 0.5em; }
+      margin: 0 0.5em 1em 0.5em; }
   form#main button.next {
     border: 0;
     color: white;

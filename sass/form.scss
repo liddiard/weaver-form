@@ -86,12 +86,17 @@ form#main {
         font-size: 1.5em;
         text-transform: uppercase;
         padding-left: 0.5em;
-        border-bottom: rgba(0,0,0, 0.5);
+        border-bottom: 1px solid rgba(0,0,0, 0.5);
+        cursor: pointer;
     }
 
     h3 {
         font-size: 1.2em;
         font-weight: bold;
+
+        .checkbox-option + & {
+            margin-top: 1em;
+        }
     }
 
     section {
@@ -101,7 +106,7 @@ form#main {
 
         .col {
             float: left;
-            margin: 0 0.5em;
+            margin: 0 0.5em 1em 0.5em;
         }
     }
 
