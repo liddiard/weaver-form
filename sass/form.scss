@@ -1,5 +1,8 @@
 $SELECT_COLOR: black;
 $ACCENT_COLOR: rgb(200,128,64);
+$MUTED_GREEN_COLOR: #3d4c2b;
+$BRIGHT_GREEN_COLOR: #4a5e22;
+$helvetica: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
 label {
     cursor: pointer;
@@ -60,12 +63,90 @@ input[type=checkbox]:checked + label:before {
     font-weight: bold;
 }  
 
-form#main section {
-    margin: 1em;
-    clear: both;
-
-    .col {
-        float: left;
-        margin: 0 0.5em;
+form#main {
+    h1 {
+        font-size: 2.25em;
+        text-align: center;
+        margin: 0.25em auto;
     }
+
+    h2 {
+        color: white;
+        background-color: $MUTED_GREEN_COLOR;
+        font-size: 1.5em;
+        text-transform: uppercase;
+        padding-left: 0.5em;
+        margin: 0 1em;
+    }
+
+    section {
+        margin: 1em;
+        clear: both;
+        overflow: hidden;
+
+        .col {
+            float: left;
+            margin: 0 0.5em;
+        }
+    }
+
+    button.next {
+        border: 0;
+        color: white;
+        background-color: $BRIGHT_GREEN_COLOR;
+        font-size: 1.5em;
+        font-family: inherit;
+        cursor: pointer;
+        display: block;
+        clear: both;
+        margin: 0 auto;
+        padding: 0.25em 0.5em;
+        -webkit-transition: background-color 0.2s;
+        transition: background-color 0.2s;
+
+        &:hover {
+            background-color: $BRIGHT_GREEN_COLOR - #222;
+        }
+
+        &.disabled {
+            background-color: rgba($ACCENT_COLOR, 0.25) !important;
+        }
+    }
+}
+
+.barn-diagrams {
+    float: left;
+
+    .barn-diagram {
+        position: relative;
+        -webkit-transition: width 0.2s, height 0.2s;
+        transition: width 0.2s, height 0.2s;
+        background-color: rgba($ACCENT_COLOR, 0.2);
+        box-shadow: rgba($ACCENT_COLOR, 0.2) 0 0 0 1px inset;
+
+        .dimension {
+            width: 80px;
+            height: 20px;
+            position: absolute;
+            left: 50%; top: 50%;
+            margin-left: -40px;
+            margin-top: -10px;
+            font-family: $helvetica;
+            font-size: 0.8em;
+            text-align: center;
+            font-weight: bold;
+        }
+    }
+
+    .top {
+        width: 80px; height: 80px;
+    }
+}
+
+.annotation {
+    display: block;
+    color: gray;
+    font-size: 0.7em;
+    text-transform: uppercase;
+    font-family: $helvetica;
 }

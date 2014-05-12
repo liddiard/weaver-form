@@ -95,24 +95,64 @@ var MenuBar1 = new Spry.Widget.MenuBar("MenuBar1", {imgDown:"SpryAssets/SpryMenu
   </script>    <form id="main">
 
     <!-- main content here -->  
+    <h1>New Order</h1>
+
+    <h2>Dimensions</h2>
     <section id="dimensions">
         <div class="col c1">
         </div>
         <div class="col c2">
         </div>
-        <div class="barn-diagram">
-            <div class="top">
+        <div class="barn-diagrams">
+            <div class="col">
+                <span class="annotation">Top View</span>
+                <div class="top barn-diagram">
+                    <span class="dimension">8x8</span>
+                </div>
             </div>
-            <div class="front">
+            <div class="col">
+                <span class="annotation">Front View</span>
+                <div class="front barn-diagram">
+                </div>
             </div>
         </div>
+        <button class="disabled next">Next Section</button>
     </section>
 
-    <section>
+    <h2>Doors</h2>
+    <section id="doors">
         <div class="checkbox-option">
             <input id="single" type="checkbox" value="single"/>
             <label for="single">Single</label>
         </div>
+    </section>
+
+    <h2>Windows</h2>
+    <section id="windows">
+    </section>
+
+    <h2>Cupolas</h2>
+    <section id="cupolas">
+    </section>
+
+    <h2>Shelves</h2>
+    <section id="shelves">
+    </section>
+
+    <h2>Lofts</h2>
+    <section id="lofts">
+    </section>
+
+    <h2>Roof</h2>
+    <section id="roof">
+    </section>
+
+    <h2>Painting &amp; Staining</h2>
+    <section id="painting-staining">
+    </section>
+
+    <h2>Miscellaneous</h2>
+    <section id="miscellaneous">
     </section>
 
     </form>

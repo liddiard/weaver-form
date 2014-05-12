@@ -3,11 +3,32 @@ $(document).ready(function(){
     for (var i = 0; i < dimensions_midpoint; i++) {
         appendBarnRadioButton(barn_dimensions[i], '#dimensions .col.c1');
     }
-    console.log(dimensions_midpoint);
     for (var i = dimensions_midpoint; i < barn_dimensions.length; i++) {
         appendBarnRadioButton(barn_dimensions[i], '#dimensions .col.c2');
     }
+
+    $('.radio-option').hover(
+        function(){
+            var width = $(this).attr('data-width-feet');
+            var height = $(this).attr('data-length-feet');
+            sizeBarnDiagram('.barn-diagram.top', width, height);
+        },
+        function(){
+            var selected_option = $('#dimensions input:radio:checked');
+            if (selected_option.length) {
+                var width = selected_option.parent().attr('data-width-feet');
+                var height = selected_option.parent().attr('data-length-feet');
+                sizeBarnDiagram('.barn-diagram.top', width, height);
+            }
+        }
+    );
 });
+
+function sizeBarnDiagram(selector, width, height) {
+    var multiplier = 10;
+    $(selector).css({'width': width*multiplier,
+                     'height': height*multiplier}).find('.dimension').text(width+'x'+height);
+}
 
 function appendBarnRadioButton(dimension, elem) {
     var container = $('<div/>', {

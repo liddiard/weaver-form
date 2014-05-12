@@ -45,9 +45,69 @@ input[type=checkbox]:checked + label:before {
   line-height: 20px;
   font-weight: bold; }
 
+form#main h1 {
+  font-size: 2.25em;
+  text-align: center;
+  margin: 0.25em auto; }
+form#main h2 {
+  color: white;
+  background-color: #3d4c2b;
+  font-size: 1.5em;
+  text-transform: uppercase;
+  padding-left: 0.5em;
+  margin: 0 1em; }
 form#main section {
   margin: 1em;
-  clear: both; }
+  clear: both;
+  overflow: hidden; }
   form#main section .col {
     float: left;
     margin: 0 0.5em; }
+form#main button.next {
+  border: 0;
+  color: white;
+  background-color: #4a5e22;
+  font-size: 1.5em;
+  font-family: inherit;
+  cursor: pointer;
+  display: block;
+  clear: both;
+  margin: 0 auto;
+  padding: 0.25em 0.5em;
+  -webkit-transition: background-color 0.2s;
+  transition: background-color 0.2s; }
+  form#main button.next:hover {
+    background-color: #283c00; }
+  form#main button.next.disabled {
+    background-color: rgba(200, 128, 64, 0.25) !important; }
+
+.barn-diagrams {
+  float: left; }
+  .barn-diagrams .barn-diagram {
+    position: relative;
+    -webkit-transition: width 0.2s, height 0.2s;
+    transition: width 0.2s, height 0.2s;
+    background-color: rgba(200, 128, 64, 0.2);
+    box-shadow: rgba(200, 128, 64, 0.2) 0 0 0 1px inset; }
+    .barn-diagrams .barn-diagram .dimension {
+      width: 80px;
+      height: 20px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-left: -40px;
+      margin-top: -10px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 0.8em;
+      text-align: center;
+      font-weight: bold; }
+  .barn-diagrams .top {
+    width: 80px;
+    height: 80px; }
+
+.annotation {
+  display: block;
+  color: gray;
+  font-size: 0.7em;
+  text-transform: uppercase;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
