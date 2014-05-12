@@ -121,14 +121,152 @@ var MenuBar1 = new Spry.Widget.MenuBar("MenuBar1", {imgDown:"SpryAssets/SpryMenu
 
     <h2>Doors</h2>
     <section id="doors">
-        <div class="checkbox-option">
-            <input id="single" type="checkbox" value="single"/>
-            <label for="single">Single</label>
-        </div>
+        <section>
+            <h3>Extra Doors</h3>
+            <div class="col">
+                <img src="img/extrasetdoubledoors.png"/>
+            </div>
+            <div class="col">
+                <div class="radio-option">
+                    <input id="wooden-doors-45" type="radio" value="" name="extra-doors"/>
+                    <label for="wooden-doors-45">Extra Set Woooden Doors, 4'W - 5'W<span class="price">[$160.00]</span></label>
+                </div>
+                <div class="radio-option">
+                    <input id="wooden-doors-67" type="radio" value="" name="extra-doors"/>
+                    <label for="wooden-doors-67">Extra Wide Wooden Doors, 6'W - 7'W<span class="price">[$60.00]</span></label>
+                </div>
+                <div class="radio-option">
+                    <input id="man-door" type="radio" value="" name="extra-doors"/>
+                    <label for="man-door">Extra Wooden Man Door 36"<span class="price">[$85.00]</span></label>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h3>Steel Entry Door</h3>
+            <div class="col">
+                <img src="img/steeldoor.png"/>
+            </div>
+            <div class="col">
+                <div class="radio-option">
+                    <input id="steeldoor36-6" type="radio" value="" name="steel-door"/>
+                    <label for="steeldoor36-6">36" 6-Panel Steel Entry Door<span class="price">[$355.00]</span></label>
+                </div>
+                <div class="radio-option">
+                    <input id="steeldoor36-9" type="radio" value="" name="steel-door"/>
+                    <label for="steeldoor36-9">36" 9-lite Steel Entry Door<span class="price">[$385.00]</span></label>
+                </div>
+                <div class="radio-option">
+                    <input id="steeldoor36-15" type="radio" value="" name="steel-door"/>
+                    <label for="steeldoor36-15">36" 15-lite Steel Entry Door<span class="price">[$580.00]</span></label>
+                </div>
+                <div class="radio-option">
+                    <input id="steeldoor72-6" type="radio" value="" name="steel-door"/>
+                    <label for="steeldoor72-6">72" 6-panel Steel Entry Door<span class="price">[$735.00]</span></label>
+                </div>
+                <div class="radio-option">
+                    <input id="steeldoor72-9" type="radio" value="" name="steel-door"/>
+                    <label for="steeldoor72-9">72" 9-lite Steel Entry Door<span class="price">[$735.00]</span></label>
+                </div>
+                <div class="radio-option">
+                    <input id="steeldoor15" type="radio" value="" name="steel-door"/>
+                    <label for="steeldoor15">72" 15-lite Steel Entry Door<span class="price">[$1100.00]</span></label>
+                </div>
+            </div>
+            <div class="col">
+                <h3>Triple Door System</h3>
+                <img src="img/tripledoors.png"/>
+            </div>
+            <div class="col">
+                <div class="checkbox-option">
+                    <input id="tripledoors" type="checkbox" value=""/>
+                    <label for="tripledoors">Triple Door System<span class="price">[$595.00]</span></label>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h3>Doors Add-on Options</h3>
+            <div class="checkbox-option">
+                <input id="deadbolt" type="checkbox" value=""/>
+                <label for="deadbolt">Dead Bolt<span class="price">[$45.00]</span></label>
+            </div>
+        </section>
+        <button class="disabled next">Next Section</button>
+
     </section>
 
     <h2>Windows</h2>
     <section id="windows">
+        <section>
+            <div class="col">
+                <img src="img/whitewindow.png"/>
+            </div>
+            <div class="col">
+                <div class="radio-option">
+                    <input id="singlehung2-2w" type="radio" value="" name="windows"/>
+                    <label for="singlehung2-2w">2' x 2' Single Hung with screen &amp; grids (white)<span class="price">[$75.00]</span></label>
+                </div>
+                <div class="radio-option">
+                    <input id="singlehung2-2b" type="radio" value="" name="windows"/>
+                    <label for="singlehung2-2b">2' x 2' Single Hung with screen &amp; grids (brown)<span class="price">[$75.00]</span></label>
+                </div>
+                <div class="radio-option">
+                    <input id="singlehung2-3w" type="radio" value="" name="windows"/>
+                    <label for="singlehung2-3w">2' x 3' Single Hung with screen &amp; grids (white)<span class="price">[$85.00]</span></label>
+                </div>
+                <div class="radio-option">
+                    <input id="singlehung2-3b" type="radio" value="" name="windows"/>
+                    <label for="singlehung2-3b">2' x 3' Single Hung with screen &amp; grids (brown)<span class="price">[$85.00]</span></label>
+                </div>
+                <div class="radio-option">
+                    <input id="transom2-3w" type="radio" value="" name="windows"/>
+                    <label for="transom2-3w">2' x 3' Window with Transom (white)<span class="price">[$135.00]</span></label>
+                </div>
+                <div class="radio-option">
+                    <input id="transom2-3b" type="radio" value="" name="windows"/>
+                    <label for="transom2-3b">2' x 3' Window with Transom (brown)<span class="price">[$135.00]</span></label>
+                </div>
+                <div class="radio-option">
+                    <input id="vinyl2-3w" type="radio" value="" name="windows"/>
+                    <label for="vinyl2-3w">2' x 3' Vinyl Window with screen &amp; grids (white)<span class="price">[$185.00]</span></label>
+                </div>
+                <div class="radio-option">
+                    <input id="vinyl2-3a" type="radio" value="" name="windows"/>
+                    <label for="vinyl2-3a">2' x 3' Vinyl Window with screen &amp; grids (almond)<span class="price">[$210.00]</span></label>
+                </div>
+                <div class="radio-option">
+                    <input id="vinyl2-3c" type="radio" value="" name="windows"/>
+                    <label for="vinyl2-3c">2' x 3' Vinyl Window with screen &amp; grids (clay)<span class="price">[$210.00]</span></label>
+                </div>
+                <div class="radio-option">
+                    <input id="vinyl3-4w" type="radio" value="" name="windows"/>
+                    <label for="vinyl3-4w">3' x 4' Vinyl Window with screen &amp; grids (white)<span class="price">[$235.00]</span></label>
+                </div>
+                <div class="radio-option">
+                    <input id="vinyl3-4a" type="radio" value="" name="windows"/>
+                    <label for="vinyl3-4a">3' x 4' Vinyl Window with screen &amp; grids (almond)<span class="price">[$270.00]</span></label>
+                </div>
+                <div class="radio-option">
+                    <input id="vinyl3-4c" type="radio" value="" name="windows"/>
+                    <label for="vinyl3-4c">3' x 4' Vinyl Window with screen &amp; grids (clay)<span class="price">[$270.00]</span></label>
+                </div>
+            </div>
+            <div class="col">
+                <img src="img/vinylwindow.png"/>
+            </div>
+        </section>
+        <section>
+            <div class="col">
+                <img src="img/skylight.png"/>
+            </div>
+            <div class="col">
+                <div class="checkbox-option">
+                    <input id="solarlight" type="checkbox" value=""/>
+                    <label for="solarlight">Solar Shed Light <em>Installed</em><span class="price">[$150.00]</span></label>
+                </div>
+            </div>
+            <div class="col">
+            </div>
+        </section>
     </section>
 
     <h2>Cupolas</h2>

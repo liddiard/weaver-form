@@ -4,6 +4,11 @@ label {
   padding-left: 25px;
   padding-right: 10px;
   display: inline-block; }
+  label .price {
+    display: inline-block;
+    color: gray;
+    font-size: 0.9em;
+    margin-left: 0.4em; }
   label:before {
     content: "";
     display: inline-block;
@@ -35,8 +40,8 @@ input:checked + label {
 input[type=radio]:checked + label:before {
   content: "\2022";
   text-align: center;
-  font-size: 40px;
-  line-height: 16px; }
+  font-size: 32px;
+  line-height: 17px; }
 
 input[type=checkbox]:checked + label:before {
   content: "\2713";
@@ -45,42 +50,48 @@ input[type=checkbox]:checked + label:before {
   line-height: 20px;
   font-weight: bold; }
 
-form#main h1 {
-  font-size: 2.25em;
-  text-align: center;
-  margin: 0.25em auto; }
-form#main h2 {
-  color: white;
-  background-color: #3d4c2b;
-  font-size: 1.5em;
-  text-transform: uppercase;
-  padding-left: 0.5em;
-  margin: 0 1em; }
-form#main section {
-  margin: 1em;
-  clear: both;
-  overflow: hidden; }
-  form#main section .col {
-    float: left;
-    margin: 0 0.5em; }
-form#main button.next {
-  border: 0;
-  color: white;
-  background-color: #4a5e22;
-  font-size: 1.5em;
-  font-family: inherit;
-  cursor: pointer;
-  display: block;
-  clear: both;
-  margin: 0 auto;
-  padding: 0.25em 0.5em;
-  -webkit-transition: background-color 0.2s;
-  transition: background-color 0.2s; }
-  form#main button.next:hover {
-    background-color: #283c00; }
-  form#main button.next.disabled {
-    background-color: rgba(200, 128, 64, 0.25) !important;
-    cursor: default; }
+form#main {
+  padding: 0 1em;
+  box-sizing: border-box; }
+  form#main h1 {
+    font-size: 2.25em;
+    text-align: center;
+    margin: 0.25em auto; }
+  form#main h2 {
+    color: white;
+    background-color: #3d4c2b;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    padding-left: 0.5em;
+    border-bottom: rgba(0, 0, 0, 0.5); }
+  form#main h3 {
+    font-size: 1.2em;
+    font-weight: bold; }
+  form#main section {
+    margin: 1em;
+    clear: both;
+    overflow: hidden; }
+    form#main section .col {
+      float: left;
+      margin: 0 0.5em; }
+  form#main button.next {
+    border: 0;
+    color: white;
+    background-color: #4a5e22;
+    font-size: 1.5em;
+    font-family: inherit;
+    cursor: pointer;
+    display: block;
+    clear: both;
+    margin: 0 auto;
+    padding: 0.25em 0.5em;
+    -webkit-transition: background-color 0.2s;
+    transition: background-color 0.2s; }
+    form#main button.next:hover {
+      background-color: #283c00; }
+    form#main button.next.disabled {
+      background-color: rgba(200, 128, 64, 0.25) !important;
+      cursor: default; }
 
 .barn-diagrams {
   float: left; }
