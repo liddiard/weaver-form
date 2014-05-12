@@ -1,7 +1,9 @@
 label {
   cursor: pointer;
   position: relative;
-  padding-left: 20px; }
+  padding-left: 20px;
+  padding-right: 10px;
+  display: inline-block; }
   label:before {
     content: "";
     display: inline-block;
@@ -9,19 +11,26 @@ label {
     height: 16px;
     background-color: rgba(200, 128, 64, 0.3);
     box-shadow: 0 2px 6px 1px rgba(0, 0, 0, 0.4) inset;
-    color: #00aa00;
+    color: black;
     position: absolute;
-    left: 0; }
+    left: 0;
+    top: 3px; }
     .radio-option label:before {
       border-radius: 50%; }
     .checkbox-option label:before {
       border-radius: 2px; }
+  label:hover {
+    background-color: rgba(200, 128, 64, 0.1); }
 
 input[type=radio], input[type=checkbox] {
   display: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none; }
+
+input:checked + label {
+  background-color: rgba(200, 128, 64, 0.2);
+  box-shadow: rgba(200, 128, 64, 0.2) 0 0 0 1px inset; }
 
 input[type=radio]:checked + label:before {
   content: "\2022";

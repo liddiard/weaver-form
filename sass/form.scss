@@ -1,19 +1,23 @@
-$SELECT_COLOR: #0a0;
+$SELECT_COLOR: black;
+$ACCENT_COLOR: rgb(200,128,64);
 
 label {
     cursor: pointer;
     position: relative;
     padding-left: 20px;
+    padding-right: 10px;
+    display: inline-block;
 
     &:before {
         content: "";
         display: inline-block;
         width: 16px; height: 16px;
-        background-color: rgba(200,128,64, 0.3);
+        background-color: rgba($ACCENT_COLOR, 0.3);
         box-shadow: 0 2px 6px 1px rgba(0,0,0, 0.4) inset; 
         color: $SELECT_COLOR;
         position: absolute;
         left: 0;
+        top: 3px;
 
         .radio-option & {
             border-radius: 50%;
@@ -23,6 +27,10 @@ label {
             border-radius: 2px;
         }
     }
+
+    &:hover {
+        background-color: rgba($ACCENT_COLOR, 0.1);
+    }
 }
 
 input[type=radio], input[type=checkbox] {
@@ -30,6 +38,11 @@ input[type=radio], input[type=checkbox] {
     -webkit-appearance:none;
     -moz-appearance:none;
     appearance:none;
+}
+
+input:checked + label {
+    background-color: rgba($ACCENT_COLOR, 0.2);
+    box-shadow: rgba($ACCENT_COLOR, 0.2) 0 0 0 1px inset;
 }
 
 input[type=radio]:checked + label:before {
