@@ -79,7 +79,8 @@ form#main button.next {
   form#main button.next:hover {
     background-color: #283c00; }
   form#main button.next.disabled {
-    background-color: rgba(200, 128, 64, 0.25) !important; }
+    background-color: rgba(200, 128, 64, 0.25) !important;
+    cursor: default; }
 
 .barn-diagrams {
   float: left; }

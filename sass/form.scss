@@ -110,6 +110,7 @@ form#main {
 
         &.disabled {
             background-color: rgba($ACCENT_COLOR, 0.25) !important;
+            cursor: default;
         }
     }
 }
