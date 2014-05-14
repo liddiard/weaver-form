@@ -70,8 +70,8 @@ form#main {
     font-size: 0.9em;
     margin-left: 0.4em; }
   form#main h1 {
-    font-size: 2.25em;
-    text-align: center; }
+    font-size: 2.75em;
+    float: left; }
   form#main h2 {
     color: white;
     background-color: #3d4c2b;
@@ -89,6 +89,11 @@ form#main {
     margin: 1em;
     clear: both;
     overflow: hidden; }
+    form#main section.center-floated-children {
+      text-align: center; }
+      form#main section.center-floated-children .col {
+        float: none;
+        display: inline-block; }
     form#main section .col {
       float: left;
       margin: 0 0.5em 1em 0.5em; }
@@ -110,6 +115,37 @@ form#main {
     form#main button.next.disabled {
       background-color: rgba(200, 128, 64, 0.25) !important;
       cursor: default; }
+
+table.celled {
+  border-collapse: collapse; }
+  table.celled td {
+    border: 1px solid rgba(200, 128, 64, 0.2);
+    padding: 0.1em 0.5em; }
+    table.celled td.accent-background {
+      background-color: rgba(200, 128, 64, 0.2); }
+
+.form-header .info {
+  float: right;
+  margin-top: 1em;
+  position: relative; }
+  .form-header .info .customer-name, .form-header .info .price {
+    display: inline-block;
+    margin: 0 0.5em; }
+  .form-header .info .customer-name {
+    font-weight: bold; }
+  .form-header .info .price {
+    font-size: 1.4em;
+    background-color: rgba(200, 128, 64, 0.2);
+    box-shadow: rgba(200, 128, 64, 0.2) 0 0 0 1px inset;
+    padding: 0.35em 0.5em 0 0.5em; }
+    .form-header .info .price:before {
+      content: 'subtotal';
+      text-transform: uppercase;
+      color: gray;
+      font-size: 0.4em;
+      position: absolute;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      top: 4px; }
 
 .barn-diagrams {
   float: left; }
