@@ -131,8 +131,6 @@ table.celled {
   .form-header .info .customer-name, .form-header .info .price {
     display: inline-block;
     margin: 0 0.5em; }
-  .form-header .info .customer-name {
-    font-weight: bold; }
   .form-header .info .price {
     font-size: 1.4em;
     background-color: rgba(200, 128, 64, 0.2);
