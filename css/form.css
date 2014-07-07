@@ -1,177 +1,62 @@
-em {
-  font-style: italic;
-  font-weight: 500; }
-
-label {
-  cursor: pointer;
-  position: relative;
-  padding-left: 25px;
-  padding-right: 10px;
-  display: inline-block; }
-  label:before {
-    content: "";
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    background-color: rgba(200, 128, 64, 0.3);
-    box-shadow: 0 2px 6px 1px rgba(0, 0, 0, 0.4) inset;
-    color: black;
-    position: absolute;
-    left: 5px;
-    top: 3px; }
-    .radio-option label:before {
-      border-radius: 50%; }
-    .checkbox-option label:before {
-      border-radius: 2px; }
-  label:hover {
-    background-color: rgba(200, 128, 64, 0.1); }
-
-input[type=radio], input[type=checkbox] {
-  display: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none; }
-
-input:checked + label {
-  background-color: rgba(200, 128, 64, 0.2);
-  box-shadow: rgba(200, 128, 64, 0.2) 0 0 0 1px inset; }
-
-input[type=radio]:checked + label:before {
-  content: "\2022";
-  text-align: center;
-  font-size: 32px;
-  line-height: 17px; }
-
-input[type=checkbox]:checked + label:before {
-  content: "\2713";
-  font-size: 20px;
-  text-align: center;
-  line-height: 20px;
-  font-weight: bold; }
-
-input[type=text], input[type=number] {
-  background-color: rgba(200, 128, 64, 0.2);
-  border: 1px solid rgba(200, 128, 64, 0.2);
-  box-shadow: 0 2px 6px 1px rgba(0, 0, 0, 0.4) inset;
-  padding: 0.25em 0.5em;
-  font-weight: bold;
-  font-family: serif;
-  font-size: 0.9em; }
-
-input[type=number] {
-  width: 40px; }
-
-form#main {
-  padding: 0 1em;
-  box-sizing: border-box; }
-  form#main .unit {
-    display: inline-block;
-    color: gray;
-    font-size: 0.9em;
-    margin-left: 0.4em; }
-  form#main h1 {
-    font-size: 2.75em;
-    float: left; }
-  form#main h2 {
-    color: white;
-    background-color: #3d4c2b;
-    font-size: 1.5em;
-    text-transform: uppercase;
-    padding-left: 0.5em;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
-    cursor: pointer; }
-  form#main h3 {
-    font-size: 1.2em;
-    font-weight: bold; }
-    .checkbox-option + form#main h3 {
-      margin-top: 1em; }
-  form#main section {
-    margin: 1em;
-    clear: both;
-    overflow: hidden; }
-    form#main section.center-floated-children {
-      text-align: center; }
-      form#main section.center-floated-children .col {
-        float: none;
-        display: inline-block; }
-    form#main section .col {
-      float: left;
-      margin: 0 0.5em 1em 0.5em; }
-  form#main button.next {
-    border: 0;
-    color: white;
-    background-color: #4a5e22;
-    font-size: 1.5em;
-    font-family: inherit;
-    cursor: pointer;
-    display: block;
-    clear: both;
-    margin: 0 auto;
-    padding: 0.25em 0.5em;
-    -webkit-transition: background-color 0.2s;
-    transition: background-color 0.2s; }
-    form#main button.next:hover {
-      background-color: #283c00; }
-    form#main button.next.disabled {
-      background-color: rgba(200, 128, 64, 0.25) !important;
-      cursor: default; }
-
-table.celled {
-  border-collapse: collapse; }
-  table.celled td {
-    border: 1px solid rgba(200, 128, 64, 0.2);
-    padding: 0.1em 0.5em; }
-    table.celled td.accent-background {
-      background-color: rgba(200, 128, 64, 0.2); }
-
-.form-header .info {
-  float: right;
-  margin-top: 1em;
-  position: relative; }
-  .form-header .info .customer-name, .form-header .info .price {
-    display: inline-block;
-    margin: 0 0.5em; }
-  .form-header .info .price {
-    font-size: 1.4em;
-    background-color: rgba(200, 128, 64, 0.2);
-    box-shadow: rgba(200, 128, 64, 0.2) 0 0 0 1px inset;
-    padding: 0.35em 0.5em 0 0.5em; }
-    .form-header .info .price:before {
-      content: 'subtotal';
-      text-transform: uppercase;
-      color: gray;
-      font-size: 0.4em;
-      position: absolute;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      top: 4px; }
-
-.barn-diagrams {
-  float: left; }
-  .barn-diagrams .barn-diagram {
-    position: relative;
-    -webkit-transition: width 0.2s, height 0.2s;
-    transition: width 0.2s, height 0.2s;
-    background-color: rgba(200, 128, 64, 0.2);
-    box-shadow: rgba(200, 128, 64, 0.2) 0 0 0 1px inset; }
-    .barn-diagrams .barn-diagram .dimension {
-      width: 80px;
-      height: 20px;
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      margin-left: -40px;
-      margin-top: -10px;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 0.8em;
-      text-align: center;
-      font-weight: bold; }
-  .barn-diagrams .top {
-    width: 80px;
-    height: 80px; }
-
-.annotation {
-  display: block;
+aside {
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100%;
+  background-color: #eee;
   color: gray;
-  font-size: 0.7em;
-  text-transform: uppercase;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  line-height: 1.2;
+  width: 300px;
+  padding: 2em 1em;
+  box-sizing: border-box; }
+  aside h1 {
+    margin: 0; }
+  aside h2 {
+    font-weight: 300; }
+    aside h2.customer {
+      font-size: 1.3em;
+      margin: 0; }
+    aside h2.barn-type {
+      font-size: 1.4em;
+      margin-bottom: 0; }
+  aside h3 {
+    margin-top: 0;
+    font-weight: 300;
+    font-size: 1em; }
+  aside h4 {
+    font-weight: 300;
+    margin-bottom: 0.75em; }
+  aside h5 {
+    font-weight: normal;
+    font-style: italic;
+    color: #637021;
+    margin: 0.75em 0 0 0; }
+    aside h5:first-of-type {
+      margin-top: 0; }
+  aside .option {
+    display: table;
+    table-layout: fixed; }
+    aside .option > span {
+      display: table-cell; }
+    aside .option .quantity {
+      width: 25px; }
+      aside .option .quantity:after {
+        content: ' \2013 '; }
+    aside .option .name {
+      width: 180px; }
+      aside .option .name:after {
+        border-bottom: 1px dotted black;
+        width: 100%;
+        position: absolute; }
+  aside .totals {
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 2em; }
+    aside .totals h2 {
+      font-weight: normal;
+      font-size: 1.2em; }
+    aside .totals > span {
+      display: block;
+      padding: 0.1em 0; }

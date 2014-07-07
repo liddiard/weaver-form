@@ -1,243 +1,99 @@
-$SELECT_COLOR: black;
-$ACCENT_COLOR: rgb(200,128,64);
-$MUTED_GREEN_COLOR: #3d4c2b;
-$BRIGHT_GREEN_COLOR: #4a5e22;
-$helvetica: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$GREEN_ACCENT: #637021;
 
-em {
-    font-style: italic;
-    font-weight: 500;
-}
-
-label {
-    cursor: pointer;
-    position: relative;
-    padding-left: 25px;
-    padding-right: 10px;
-    display: inline-block;
-
-    &:before {
-        content: "";
-        display: inline-block;
-        width: 16px; height: 16px;
-        background-color: rgba($ACCENT_COLOR, 0.3);
-        box-shadow: 0 2px 6px 1px rgba(0,0,0, 0.4) inset; 
-        color: $SELECT_COLOR;
-        position: absolute;
-        left: 5px;
-        top: 3px;
-
-        .radio-option & {
-            border-radius: 50%;
-        }
-
-        .checkbox-option & {
-            border-radius: 2px;
-        }
-    }
-
-    &:hover {
-        background-color: rgba($ACCENT_COLOR, 0.1);
-    }
-}
-
-input[type=radio], input[type=checkbox] {
-    display: none;
-    -webkit-appearance:none;
-    -moz-appearance:none;
-    appearance:none;
-}
-
-input:checked + label {
-    background-color: rgba($ACCENT_COLOR, 0.2);
-    box-shadow: rgba($ACCENT_COLOR, 0.2) 0 0 0 1px inset;
-}
-
-input[type=radio]:checked + label:before {
-    content: "\2022";
-    text-align: center;
-    font-size: 32px;  
-    line-height: 17px;
-}
-
-input[type=checkbox]:checked + label:before {  
-    content: "\2713";  
-    font-size: 20px;  
-    text-align: center;  
-    line-height: 20px;  
-    font-weight: bold;
-}
-
-input[type=text], input[type=number] {
-    background-color: rgba($ACCENT_COLOR, 0.2);
-    border: 1px solid rgba($ACCENT_COLOR, 0.2);
-    box-shadow: 0 2px 6px 1px rgba(0,0,0, 0.4) inset; 
-    padding: 0.25em 0.5em;
-    font-weight: bold;
-    font-family: serif;
-    font-size: 0.9em;
-}
-
-input[type=number] {
-    width: 40px;
-}
-
-form#main {
-    padding: 0 1em;
+aside {
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100%;
+    background-color: #eee;
+    color: gray;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    line-height: 1.2;
+    width: 300px;
+    padding: 2em 1em;
     box-sizing: border-box;
 
-    .unit {
-        display: inline-block;
-        color: gray;
-        font-size: 0.9em;
-        margin-left: 0.4em;
-    }
-
     h1 {
-        font-size: 2.75em;
-        float: left;
+        margin: 0;
     }
 
     h2 {
-        color: white;
-        background-color: $MUTED_GREEN_COLOR;
-        font-size: 1.5em;
-        text-transform: uppercase;
-        padding-left: 0.5em;
-        border-bottom: 1px solid rgba(0,0,0, 0.5);
-        cursor: pointer;
+        font-weight: 300;
+
+        &.customer {
+            font-size: 1.3em;
+            margin: 0;
+        }
+
+        &.barn-type {
+            font-size: 1.4em;
+            margin-bottom: 0;
+        }
     }
 
     h3 {
-        font-size: 1.2em;
-        font-weight: bold;
+        margin-top: 0;
+        font-weight: 300;
+        font-size: 1em;
+    }
 
-        .checkbox-option + & {
-            margin-top: 1em;
+    h4 {
+        font-weight: 300;
+        margin-bottom: 0.75em;
+    }
+
+    h5 {
+        font-weight: normal;
+        font-style: italic;
+        color: $GREEN_ACCENT;
+        margin: 0.75em 0 0 0;
+
+        &:first-of-type {
+            margin-top: 0;
         }
     }
 
-    section {
-        margin: 1em;
-        clear: both;
-        overflow: hidden;
+    .option {
+        display: table;
+        table-layout: fixed;
 
-        &.center-floated-children {
-            text-align: center;
+        & > span {
+            display: table-cell;
+        }
 
-            .col {
-                float: none;
-                display: inline-block;
+        .quantity {
+            width: 25px;
+
+            &:after {
+                content: ' \2013 ';
             }
         }
 
-        .col {
-            float: left;
-            margin: 0 0.5em 1em 0.5em;
-        }
-    }
+        .name {
+            width: 180px;
 
-    button.next {
-        border: 0;
-        color: white;
-        background-color: $BRIGHT_GREEN_COLOR;
-        font-size: 1.5em;
-        font-family: inherit;
-        cursor: pointer;
-        display: block;
-        clear: both;
-        margin: 0 auto;
-        padding: 0.25em 0.5em;
-        -webkit-transition: background-color 0.2s;
-        transition: background-color 0.2s;
-
-        &:hover {
-            background-color: $BRIGHT_GREEN_COLOR - #222;
-        }
-
-        &.disabled {
-            background-color: rgba($ACCENT_COLOR, 0.25) !important;
-            cursor: default;
-        }
-    }
-}
-
-table.celled {
-    border-collapse: collapse;
-
-    td {
-        border: 1px solid rgba($ACCENT_COLOR, 0.2);
-        padding: 0.1em 0.5em;
-
-        &.accent-background {
-            background-color: rgba($ACCENT_COLOR, 0.2);
-        }
-    }
-}
-
-.form-header {
-    .info {
-        float: right;
-        margin-top: 1em;
-        position: relative;
-
-        .customer-name, .price {
-            display: inline-block;
-            margin: 0 0.5em;
-        }
-
-       .price {
-            font-size: 1.4em;
-            background-color: rgba($ACCENT_COLOR, 0.2);
-            box-shadow: rgba($ACCENT_COLOR, 0.2) 0 0 0 1px inset;
-            padding: 0.35em 0.5em 0 0.5em;
-
-            &:before {
-                content: 'subtotal';
-                text-transform: uppercase;
-                color: gray;
-                font-size: 0.4em;
+            &:after {
+                border-bottom: 1px dotted black;
+                width: 100%;
                 position: absolute;
-                font-family: $helvetica;
-                top: 4px;
             }
-       }
-    }
-}
-
-.barn-diagrams {
-    float: left;
-
-    .barn-diagram {
-        position: relative;
-        -webkit-transition: width 0.2s, height 0.2s;
-        transition: width 0.2s, height 0.2s;
-        background-color: rgba($ACCENT_COLOR, 0.2);
-        box-shadow: rgba($ACCENT_COLOR, 0.2) 0 0 0 1px inset;
-
-        .dimension {
-            width: 80px;
-            height: 20px;
-            position: absolute;
-            left: 50%; top: 50%;
-            margin-left: -40px;
-            margin-top: -10px;
-            font-family: $helvetica;
-            font-size: 0.8em;
-            text-align: center;
-            font-weight: bold;
         }
     }
 
-    .top {
-        width: 80px; height: 80px;
-    }
-}
+    .totals {
+        position: absolute;
+        bottom: 0;
+        margin-bottom: 2em;
 
-.annotation {
-    display: block;
-    color: gray;
-    font-size: 0.7em;
-    text-transform: uppercase;
-    font-family: $helvetica;
+        h2 {
+            font-weight: normal;
+            font-size: 1.2em;
+        }
+
+        & > span {
+            display: block;
+            padding: 0.1em 0;
+        }
+    }
 }
