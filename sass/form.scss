@@ -1,17 +1,19 @@
-$GREEN_ACCENT: #637021;
+$GREEN_ACCENT_BACKGROUD: #637021;
+$GREEN_ACCENT_FOREGROUND: #839C00;
 
 aside {
+    $horizontal_padding: 1rem;
     position: fixed;
     right: 0;
     top: 0;
     height: 100%;
     background-color: #eee;
-    color: gray;
+    color: #666;
     font-family: 'Lato', sans-serif;
     font-weight: 300;
     line-height: 1.2;
     width: 300px;
-    padding: 2em 1em;
+    padding: 2em $horizontal_padding;
     box-sizing: border-box;
 
     h1 {
@@ -46,7 +48,7 @@ aside {
     h5 {
         font-weight: normal;
         font-style: italic;
-        color: $GREEN_ACCENT;
+        color: $GREEN_ACCENT_FOREGROUND;
         margin: 0.75em 0 0 0;
 
         &:first-of-type {
@@ -82,18 +84,39 @@ aside {
     }
 
     .totals {
+        $dark_stripe: rgba(0,0,0, 0.05);
         position: absolute;
         bottom: 0;
         margin-bottom: 2em;
+        margin-left: -$horizontal_padding;
+        width: 100%;
 
         h2 {
             font-weight: normal;
             font-size: 1.2em;
+            padding-left: $horizontal_padding;
+            background-color: $dark_stripe;
+            margin: 0;
+            padding: 0.3em $horizontal_padding 0.1em $horizontal_padding;
+            color: #444;
         }
 
         & > span {
             display: block;
-            padding: 0.1em 0;
+            padding: 0.2em 0;
+            padding-left: $horizontal_padding;
+
+            &:nth-child(even) {
+                background-color: $dark_stripe;
+            }
+        }
+
+        .price {
+            padding-left: 0.25em;
+        }
+
+        .total {
+            background-color: #fc0 !important;
         }
     }
 }
