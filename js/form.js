@@ -12,14 +12,19 @@ $(document).ready(function(){
     $('button.next').not('.disabled').click(function(event){
         event.preventDefault(); // prevent button click from reloading the page
         window.scrollTo(0, 0); // jump the page back to the top
-        $(this).parent().hide();
-        $(this).parent().nextAll('section').first().fadeIn('fast');
+        $(this).parent().hide(); // hide the current section
+        var new_section = $(this).parent().nextAll('section').first().fadeIn('fast'); // display the new section
+        var id = new_section.attr('id');
+        $('nav ul li').removeClass('active');
+        $('nav ul li#'+id).addClass('active'); // highlight it in the nav bar
     });
 
     $('nav ul li').click(function(){
         var id = $(this).attr('id');
         $('form#main > section').hide();
         $('form#main > section#'+id).fadeIn('fast');
+        $('nav ul li').removeClass('active');
+        $(this).addClass('active');
     });
 
     $('.radio-option').hover(

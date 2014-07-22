@@ -51,7 +51,7 @@ header {
           margin: -1em 0.4em;
           position: absolute; }
         header nav ul li.active {
-          color: #ffe; }
+          color: white; }
 
 aside {
   position: fixed;
