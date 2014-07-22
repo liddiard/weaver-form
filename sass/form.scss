@@ -1,11 +1,17 @@
 $GREEN_ACCENT_BACKGROUND: #637021;
 $GREEN_ACCENT_FOREGROUND: #839C00;
+$FORM_ACCENT: rgb(200,180,160);
+$FORM_SELECT: black;
+$MUTED_GREEN_COLOR: #3d4c2b;
+$BRIGHT_GREEN_COLOR: #4a5e22;
 $SIDEBAR_WIDTH: 300px;
+$helvetica: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
 body {
     margin: 0;
     border: 0;
     padding: 0;
+    font-family: $helvetica;
 }
 
 header {
@@ -50,7 +56,7 @@ header {
 
             li {
                 display: inline-block;
-                padding: 1em 0.5em;
+                padding: 1em;
                 cursor: pointer;
 
                 &:after {
@@ -59,9 +65,10 @@ header {
                     display: inline-block;
                     background-size: contain;
                     width: 20px;
-                    height: 40px;
+                    height: 51px;
                     background-repeat: no-repeat;
-                    margin: -1em 0;
+                    margin: -1em 0.4em;
+                    position: absolute;
                 }
             }
         }
@@ -186,4 +193,205 @@ aside {
             background-color: #fc0 !important;
         }
     }
+}
+
+label {
+    cursor: pointer;
+    position: relative;
+    padding: 0 10px 5px 25px;
+    display: inline-block;
+
+    &:before {
+        content: "";
+        display: inline-block;
+        width: 16px; height: 16px;
+        background-color: rgba($FORM_ACCENT, 0.3);
+        box-shadow: 0 2px 6px 1px rgba(0,0,0, 0.4) inset;
+        color: $FORM_SELECT;
+        position: absolute;
+        left: 5px;
+        top: 3px;
+
+        .radio-option & {
+            border-radius: 50%;
+        }
+
+        .checkbox-option & {
+            border-radius: 2px;
+        }
+    }
+
+    &:hover {
+        background-color: rgba($FORM_ACCENT, 0.1);
+    }
+}
+
+input[type=radio], input[type=checkbox] {
+    display: none;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    appearance:none;
+}
+
+input:checked + label {
+    background-color: rgba($FORM_ACCENT, 0.2);
+    box-shadow: rgba($FORM_ACCENT, 0.2) 0 0 0 1px inset;
+}
+
+input[type=radio]:checked + label:before {
+    content: "\2022";
+    text-align: center;
+    font-size: 32px;
+    line-height: 17px;
+}
+
+input[type=checkbox]:checked + label:before {
+    content: "\2713";
+    font-size: 20px;
+    text-align: center;
+    line-height: 20px;
+    font-weight: bold;
+}
+
+input[type=text], input[type=number] {
+    background-color: rgba($FORM_ACCENT, 0.2);
+    border: 1px solid rgba($FORM_ACCENT, 0.2);
+    box-shadow: 0 2px 6px 1px rgba(0,0,0, 0.4) inset;
+    padding: 0.25em 0.5em;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+input[type=number] {
+    width: 40px;
+}
+
+form#main {
+    padding: 0 1em;
+    box-sizing: border-box;
+
+    .unit {
+        display: inline-block;
+        color: gray;
+        font-size: 0.9em;
+        margin-left: 0.4em;
+    }
+
+    h1 {
+        font-size: 2.75em;
+        float: left;
+    }
+
+    h2 {
+        color: white;
+        background-color: $MUTED_GREEN_COLOR;
+        font-size: 1.5em;
+        text-transform: uppercase;
+        padding-left: 0.5em;
+        border-bottom: 1px solid rgba(0,0,0, 0.5);
+        cursor: pointer;
+    }
+
+    h3 {
+        font-size: 1.2em;
+        font-weight: bold;
+
+        .checkbox-option + & {
+            margin-top: 1em;
+        }
+    }
+
+    section {
+        margin: 1em;
+        clear: both;
+        overflow: hidden;
+
+        &.center-floated-children {
+            text-align: center;
+
+            .col {
+                float: none;
+                display: inline-block;
+            }
+        }
+
+        .col {
+            float: left;
+            margin: 0 0.5em 1em 0.5em;
+        }
+    }
+
+    button.next {
+        border: 0;
+        color: white;
+        background-color: $BRIGHT_GREEN_COLOR;
+        font-size: 1.5em;
+        font-family: inherit;
+        cursor: pointer;
+        display: block;
+        clear: both;
+        margin: 0 auto;
+        padding: 0.25em 0.5em;
+        -webkit-transition: background-color 0.2s;
+        transition: background-color 0.2s;
+
+        &:hover {
+            background-color: $BRIGHT_GREEN_COLOR - #222;
+        }
+
+        &.disabled {
+            background-color: rgba($FORM_ACCENT, 0.25) !important;
+            cursor: default;
+        }
+    }
+}
+
+table.celled {
+    border-collapse: collapse;
+
+    td {
+        border: 1px solid rgba($FORM_ACCENT, 0.2);
+        padding: 0.1em 0.5em;
+
+        &.accent-background {
+            background-color: rgba($FORM_ACCENT, 0.2);
+        }
+    }
+}
+
+.barn-diagrams {
+    float: left;
+
+    .barn-diagram {
+        position: relative;
+        -webkit-transition: width 0.2s, height 0.2s;
+        transition: width 0.2s, height 0.2s;
+        background-color: rgba($FORM_ACCENT, 0.2);
+        box-shadow: rgba($FORM_ACCENT, 0.2) 0 0 0 1px inset;
+
+        .dimension {
+            width: 80px;
+            height: 20px;
+            position: absolute;
+            left: 50%; top: 50%;
+            margin-left: -40px;
+            margin-top: -10px;
+            font-family: $helvetica;
+            font-size: 0.8em;
+            text-align: center;
+            font-weight: bold;
+        }
+    }
+
+    .top {
+        width: 80px; height: 80px;
+    }
+}
+
+.annotation {
+    display: block;
+    color: gray;
+    font-size: 0.7em;
+    text-transform: uppercase;
+    font-family: $helvetica;
 }
