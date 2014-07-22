@@ -233,8 +233,19 @@ form#main {
     padding: 0.25em 0.5em;
     -webkit-transition: background-color 0.2s;
     transition: background-color 0.2s; }
+    form#main button.next:after {
+      content: '';
+      margin: -0.25em 0.5em;
+      border-width: 20px;
+      border-style: solid;
+      border-color: transparent transparent transparent #4a5e22;
+      position: absolute;
+      -webkit-transition: border-color 0.2s;
+      transition: border-color 0.2s; }
     form#main button.next:hover {
       background-color: #283c00; }
+      form#main button.next:hover:after {
+        border-color: transparent transparent transparent #283c00; }
     form#main button.next.disabled {
       background-color: rgba(200, 180, 160, 0.25) !important;
       cursor: default; }

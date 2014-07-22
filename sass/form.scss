@@ -342,8 +342,23 @@ form#main {
         -webkit-transition: background-color 0.2s;
         transition: background-color 0.2s;
 
+        &:after {
+            content: '';
+            margin: -0.25em 0.5em;
+            border-width: 20px;
+            border-style: solid;
+            border-color: transparent transparent transparent $BRIGHT_GREEN_COLOR;
+            position: absolute;
+            -webkit-transition: border-color 0.2s;
+            transition: border-color 0.2s;
+        }
+
         &:hover {
             background-color: $BRIGHT_GREEN_COLOR - #222;
+
+            &:after {
+                border-color: transparent transparent transparent $BRIGHT_GREEN_COLOR - #222;
+            }
         }
 
         &.disabled {
