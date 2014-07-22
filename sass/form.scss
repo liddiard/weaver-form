@@ -6,6 +6,7 @@ $MUTED_GREEN_COLOR: #3d4c2b;
 $BRIGHT_GREEN_COLOR: #4a5e22;
 $SIDEBAR_WIDTH: 300px;
 $helvetica: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$lato: 'Lato', sans-serif;
 
 body {
     margin: 0;
@@ -16,8 +17,7 @@ body {
 
 header {
     background-color: $GREEN_ACCENT_BACKGROUND;
-    color: white;
-    font-family: 'Lato', sans-serif;
+    font-family: $lato;
     color: #feb;
     position: relative;
     padding-right: $SIDEBAR_WIDTH;
@@ -53,6 +53,7 @@ header {
 
         ul {
             list-style-type: none;
+            padding: 0;
 
             li {
                 display: inline-block;
@@ -278,6 +279,7 @@ input[type=number] {
 form#main {
     padding: 0 1em;
     box-sizing: border-box;
+    margin-right: $SIDEBAR_WIDTH;
 
     .unit {
         display: inline-block;
@@ -292,13 +294,9 @@ form#main {
     }
 
     h2 {
-        color: white;
-        background-color: $MUTED_GREEN_COLOR;
-        font-size: 1.5em;
-        text-transform: uppercase;
-        padding-left: 0.5em;
-        border-bottom: 1px solid rgba(0,0,0, 0.5);
-        cursor: pointer;
+        font-weight: normal;
+        font-size: 2.25em;
+        color: #666;
     }
 
     h3 {
