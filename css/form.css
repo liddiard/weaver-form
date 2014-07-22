@@ -36,7 +36,10 @@ header {
       header nav ul li {
         display: inline-block;
         padding: 1em;
-        cursor: pointer; }
+        cursor: pointer;
+        transition: color 0.25s; }
+        header nav ul li:hover {
+          color: #fed; }
         header nav ul li:after {
           content: ' ';
           background: url("../img/section_arrow.svg");
@@ -47,6 +50,8 @@ header {
           background-repeat: no-repeat;
           margin: -1em 0.4em;
           position: absolute; }
+        header nav ul li.active {
+          color: #ffe; }
 
 aside {
   position: fixed;
