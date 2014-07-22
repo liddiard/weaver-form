@@ -10,14 +10,16 @@ $(document).ready(function(){
     $('form#main > section').not(':first').hide();
 
     $('button.next').not('.disabled').click(function(event){
-        event.preventDefault();
+        event.preventDefault(); // prevent button click from reloading the page
+        window.scrollTo(0, 0); // jump the page back to the top
         $(this).parent().hide();
         $(this).parent().nextAll('section').first().fadeIn('fast');
     });
 
-    $('form#main h2').click(function(){
-        $('form#main > section').slideUp();
-        $(this).next().slideDown();
+    $('nav ul li').click(function(){
+        var id = $(this).attr('id');
+        $('form#main > section').hide();
+        $('form#main > section#'+id).fadeIn('fast');
     });
 
     $('.radio-option').hover(
@@ -44,6 +46,7 @@ function sizeBarnDiagram(selector, width, height) {
 }
 
 function appendBarnRadioButton(dimension, elem) {
+    // dynamically add the form options for barn dimensions to the DOM
     var container = $('<div/>', {
         'class': 'radio-option',
         'data-width-feet': dimension.width.feet,
