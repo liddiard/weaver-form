@@ -11,8 +11,8 @@ $(document).ready(function(){
 
     $('button.next').not('.disabled').click(function(event){
         event.preventDefault();
-        $(this).parent().slideUp();
-        $(this).parent().nextAll('section').first().slideDown();
+        $(this).parent().hide();
+        $(this).parent().nextAll('section').first().fadeIn('fast');
     });
 
     $('form#main h2').click(function(){

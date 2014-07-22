@@ -3,6 +3,8 @@
 <head>
 	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,400italic' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="css/form.css">
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script> <!-- TODO: make protocol agnostic for production -->
+	<script type="text/javascript" src="js/form.js"></script>
 </head>
 <body>
 	<header>
@@ -79,8 +81,8 @@
 
 	<form id="main">
 	    <!-- main content here -->
-	    <h2>Dimensions</h2>
 	    <section id="dimensions">
+			<h2>Dimensions</h2>
 	        <div class="col c1">
 	            <!-- this gets populated by form.js -->
 	        </div>
@@ -103,8 +105,8 @@
 	        <button class="next">Next Section</button>
 	    </section>
 
-	    <h2>Doors</h2>
 	    <section id="doors">
+			<h2>Doors</h2>
 	        <section>
 	            <h3>Extra Doors</h3>
 	            <div class="col">
@@ -178,8 +180,8 @@
 
 	    </section>
 
-	    <h2>Windows</h2>
 	    <section id="windows">
+			<h2>Windows</h2>
 	        <section>
 	            <div class="col">
 	                <img src="img/whitewindow.png"/>
@@ -304,8 +306,8 @@
 	        <button class="next">Next Section</button>
 	    </section>
 
-	    <h2>Cupolas</h2>
 	    <section id="cupolas">
+			<h2>Cupolas</h2>
 	        <section>
 	            <div class="col">
 	                <img src="img/windowpanecupola.png"/>
@@ -363,8 +365,8 @@
 	        <button class="next">Next Section</button>
 	    </section>
 
-	    <h2>Shelves</h2>
 	    <section id="shelves">
+			<h2>Shelves</h2>
 	        <div class="col">
 	            <img src="img/shelves.jpg"/>
 	        </div>
@@ -401,9 +403,9 @@
 	        <button class="next">Next Section</button>
 	    </section>
 
-	    <h2>Lofts</h2>
 	    <section id="lofts">
-	      <div class="col">
+			<h2>Lofts</h2>
+			<div class="col">
 	            <img src="img/loft.jpg"/>
 	        </div>
 	        <div class="col">
@@ -431,8 +433,8 @@
 	        <button class="next">Next Section</button>
 	    </section>
 
-	    <h2>Roof</h2>
 	    <section id="roof">
+			<h2>Roof</h2>
 	        <div class="col">
 	            <img src="img/shingles.jpg"/>
 	        </div>
@@ -457,8 +459,8 @@
 	        <button class="next">Next Section</button>
 	    </section>
 
-	    <h2>Painting &amp; Staining</h2>
 	    <section id="painting-staining">
+			<h2>Painting &amp; Staining</h2>
 	        <div class="col">
 	            <table>
 	                <tr>
@@ -554,8 +556,8 @@
 	        <button class="next">Next Section</button>
 	    </section>
 
-	    <h2>Miscellaneous</h2>
 	    <section id="miscellaneous">
+			<h2>Miscellaneous</h2>
 	        <section>
 	            <div class="col">
 	                <div class="checkbox-option">
@@ -628,6 +630,7 @@
 	        </section>
 	        <button class="next">Review Order</button>
 	    </section>
+		
 	    <section id="review">
 	        <section class="center-floated-children">
 	            <div class="col">
