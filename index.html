@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="order">
 <head>
 	<link href='https://fonts.googleapis.com/css?family=Lato:300,400,700,400italic' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="css/form.css">
@@ -7,7 +7,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js"></script>
 	<script type="text/javascript" src="js/app.js"></script>
 </head>
-<body ng-app="form">
+<body ng-controller="FormController as form">
 	<header>
 		<img id="banner" src=""/>
 		<h1>Mini Barn Order Form</h1>
@@ -17,16 +17,16 @@
 		</div>
 		<nav>
 			<ul>
-				<li id="dimensions" class="active">Dimensions &amp; Layout</li>
-				<li id="doors">Doors</li>
-				<li id="windows">Windows</li>
-				<li id="cupolas">Cupolas</li>
-				<li id="shelves">Shelves</li>
-				<li id="lofts">Lofts</li>
-				<li id="roof">Roof</li>
-				<li id="paint">Paint &amp; Stain</li>
-				<li id="misc">Misc.</li>
-				<li id="summary">Summary</li>
+				<li ng-click="form.selectSection(0)" ng-class="{ active: form.isSelected(0) }" id="dimensions">Dimensions &amp; Layout</li>
+				<li ng-click="form.selectSection(1)" ng-class="{ active: form.isSelected(1) }" id="doors">Doors</li>
+				<li ng-click="form.selectSection(2)" ng-class="{ active: form.isSelected(2) }" id="windows">Windows</li>
+				<li ng-click="form.selectSection(3)" ng-class="{ active: form.isSelected(3) }" id="cupolas">Cupolas</li>
+				<li ng-click="form.selectSection(4)" ng-class="{ active: form.isSelected(4) }" id="shelves">Shelves</li>
+				<li ng-click="form.selectSection(5)" ng-class="{ active: form.isSelected(5) }" id="lofts">Lofts</li>
+				<li ng-click="form.selectSection(6)" ng-class="{ active: form.isSelected(6) }" id="roof">Roof</li>
+				<li ng-click="form.selectSection(7)" ng-class="{ active: form.isSelected(7) }" id="paint">Paint &amp; Stain</li>
+				<li ng-click="form.selectSection(8)" ng-class="{ active: form.isSelected(8) }" id="misc">Misc.</li>
+				<li ng-click="form.selectSection(9)" ng-class="{ active: form.isSelected(9) }" id="summary">Summary</li>
 			</ul>
 		</nav>
 	</header>
@@ -80,36 +80,36 @@
 		<div>
 	</aside>
 
-	<form ng-controller="FormController as form" id="main">
+	<form id="main">
 	    <!-- main content here -->
-	    <section dimensions id="dimensions">
+	    <section dimensions ng-show="form.isSelected(0)" id="dimensions">
 	    </section>
 
-	    <section doors id="doors">
+	    <section doors ng-show="form.isSelected(1)" id="doors">
 	    </section>
 
-	    <section windows id="windows">
+	    <section windows ng-show="form.isSelected(2)" id="windows">
 	    </section>
 
-	    <section cupolas id="cupolas">
+	    <section cupolas ng-show="form.isSelected(3)" id="cupolas">
 	    </section>
 
-	    <section shelves id="shelves">
+	    <section shelves ng-show="form.isSelected(4)" id="shelves">
 	    </section>
 
-	    <section lofts id="lofts">
+	    <section lofts ng-show="form.isSelected(5)" id="lofts">
 	    </section>
 
-	    <section roof id="roof">
+	    <section roof ng-show="form.isSelected(6)" id="roof">
 	    </section>
 
-	    <section paint id="paint">
+	    <section paint ng-show="form.isSelected(7)" id="paint">
 	    </section>
 
-	    <section misc id="misc">
+	    <section misc ng-show="form.isSelected(8)" id="misc">
 	    </section>
 
-	    <section summary id="summary">
+	    <section summary ng-show="form.isSelected(9)" id="summary">
 	    </section>
     </form>
 
