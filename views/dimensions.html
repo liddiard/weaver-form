@@ -1,21 +1,5 @@
 <h2>Dimensions &amp; Layout</h2>
-<div class="col c1">
-    <!-- this gets populated by form.js -->
-</div>
-<div class="col c2">
-    <!-- this gets populated by form.js -->
-</div>
-<div class="barn-diagrams">
-    <div class="col">
-        <span class="annotation">Top View</span>
-        <div class="top barn-diagram">
-            <span class="dimension">8x8</span>
-        </div>
-    </div>
-    <div class="col">
-        <span class="annotation">Front View</span>
-        <div class="front barn-diagram">
-        </div>
-    </div>
-</div>
+<select name="style" ng-model="form.options.style" ng-options="style for style in form.styles">
+    <option disabled value="">-- choose color --</option>
+</select>
 <button ng-click="form.nextSection()" class="next">Next Section</button>
