@@ -1,5 +1,8 @@
 <h2>Dimensions &amp; Layout</h2>
 <select name="style" ng-model="form.options.style" ng-options="style for style in form.styles">
-    <option disabled value="">-- choose color --</option>
+    <option disabled value="">-- choose a style --</option>
+</select>
+<select name="dimensions" ng-model="form.options.dimensions" ng-options="dimension for dimension in form.dimensions">
+    <option disabled value="">-- choose dimensions --</option>
 </select>
 <button ng-click="form.nextSection()" class="next">Next Section</button>

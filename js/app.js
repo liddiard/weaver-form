@@ -27,7 +27,7 @@
             this.section = setSection;
         };
 
-        $http.get('http://peaceful-beyond-1028.herokuapp.com/styles').success(function(data){
+        $http.jsonp('http://peaceful-beyond-1028.herokuapp.com/styles/?callback=JSON_CALLBACK').success(function(data){
             form.styles = data;
             console.log(form.styles);
         })
