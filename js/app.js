@@ -37,7 +37,7 @@
             this.section = setSection;
         };
         this.displaySize = function(size) {
-            if (size) return size.width + "x" + size.length;
+            if (size) return size.width + "x" + size.len;
         }
 
         $http.jsonp('http://peaceful-beyond-1028.herokuapp.com/styles/?callback=JSON_CALLBACK').success(function(data){
@@ -61,7 +61,7 @@
             function() {
                 if (form.options.style.length && form.options.feature.length && form.options.zone && form.options.build_type.length && form.options.finish.length) {
                     console.log(form.options.size);
-                    $http.jsonp('http://peaceful-beyond-1028.herokuapp.com/prices/?callback=JSON_CALLBACK', {params: {style: form.options.style, width: form.options.size.width, length: form.options.style['length'], feature: form.options.feature, zone: form.options.zone, build_type: form.options.build_type}}).success(function(data){
+                    $http.jsonp('http://peaceful-beyond-1028.herokuapp.com/prices/?callback=JSON_CALLBACK', {params: {style: form.options.style, width: form.options.size.width, len: form.options.size.len, feature: form.options.feature, zone: form.options.zone, build_type: form.options.build_type}}).success(function(data){
                         console.log(data);
                     });
                 }
