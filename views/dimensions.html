@@ -8,7 +8,7 @@
     <option disabled value="">-- choose dimensions --</option>
 </select>
 
-<select name="feature" ng-model="form.options.feature" ng-options="feature for feature in form.features">
+<select ng-show="form.requiresFeature(form.options.style)" name="feature" ng-model="form.options.feature" ng-options="feature for feature in form.features">
     <option disabled value="">-- choose a feature --</option>
 </select>
 
@@ -16,7 +16,7 @@
     <option disabled value="">-- choose a zone --</option>
 </select>
 
-<div class="horizontal-group">
+<div ng-show="form.prebuilt_available" class="horizontal-group">
     <div class="radio-option">
         <input ng-model="form.options.build_type" type="radio" name="build_type" value="AOS" id="buildtype_aos">
         <label for="buildtype_aos">Assemble on site</label>
@@ -27,7 +27,7 @@
     </div>
 </div>
 
-<div class="horizontal-group">
+<div ng-show="form.finishable" class="horizontal-group">
     <div class="radio-option">
         <input ng-model="form.options.finish" type="radio" name="finish" value="paint" id="finish_paint">
         <label for="finish_paint">Paint</label>
