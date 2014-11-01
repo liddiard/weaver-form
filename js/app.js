@@ -10,7 +10,7 @@
         this.finishable = false;
         this.features = ['Deluxe', 'Premier', 'Vinyl'];
         this.noFeature = ['Porch', 'Porch 12/12 Pitch', 'Leanto']; // these styles don't have a feature selection
-        this.base_prices = {};
+        this.base_price = 0;
         this.options = {
             style: '',
             size: '',
@@ -86,7 +86,14 @@
                 }
                 if (form.validBaseOptions()) {
                     $http.jsonp('http://peaceful-beyond-1028.herokuapp.com/prices/?callback=JSON_CALLBACK', {params: {style: form.options.style, width: form.options.size.width, len: form.options.size.len, feature: form.options.feature, zone: form.options.zone, build_type: form.options.build_type}}).success(function(data){
-                        console.log(data);
+                        var total;
+                        var base = parseInt(data.base);
+                        var total = base;
+                        if (form.options.finish === 'paint')
+                            total += parseInt(data.paint);
+                        else if (form.options.finish === 'stain')
+                            total += parseInt(data.stain);
+                        form.base_price = total;
                     });
                 }
             }, true // objectEquality http://stackoverflow.com/a/15721434

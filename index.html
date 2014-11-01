@@ -34,7 +34,7 @@
 		<h1>Price Calculator</h1>
 		<h2 class="customer">Customer: John Doe</h2>
 		<h2 class="barn-type">{{form.displaySize(form.options.size)}} {{form.options.style}} {{form.options.feature}}</h2>
-		<h3 class="base-price">Base Price: $3,345.00</h3>
+		<h3 ng-show="form.base_price" class="base-price">Base Price: {{form.base_price | currency:"$":0}}</h3>
 		<h4>Options</h4>
 		<h5>Windows</h5>
 		<div class="option">
@@ -75,7 +75,7 @@
 				Tax (6.75%) <span class="price">$475.00</span>
 			</span>
 			<span class="total">
-				<strong>Total</strong> <span class="price">$5,125.00</span>
+				<strong>Total</strong> <span class="price">{{form.base_price | currency:"$"}}</span>
 			</span>
 		<div>
 	</aside>
