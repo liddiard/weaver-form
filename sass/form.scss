@@ -75,7 +75,12 @@ header {
                     height: 51px;
                     background-repeat: no-repeat;
                     margin: -1em 0.4em;
-                    position: absolute;
+                    position: absolute; 
+                }
+
+                &:last-child:after {
+                    background: none;
+                    width: 0; height: 0;
                 }
 
                 &.active {
@@ -323,6 +328,17 @@ form#main {
             }
         }
 
+        &#dimensions {
+            select {
+                font-size: 1.5em;
+            }
+
+            .options {
+                text-align: center;
+                margin-bottom: 2em;
+            }
+        }
+
         .col {
             float: left;
             margin: 0 0.5em 1em 0.5em;
@@ -369,8 +385,8 @@ form#main {
     }
 
     .horizontal-group {
-        margin: 0 1em;
-        float: left;
+        margin: 1em 1em 0;
+        display: inline-block;
 
         & > * {
             float: left;

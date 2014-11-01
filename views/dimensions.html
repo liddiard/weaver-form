@@ -1,41 +1,43 @@
 <h2>Dimensions &amp; Layout</h2>
 
-<select name="style" ng-model="form.options.style" ng-options="style for style in form.styles">
-    <option disabled value="">-- choose a style --</option>
-</select>
+<div class="options">
+	<select name="style" ng-model="form.options.style" ng-options="style for style in form.styles">
+	    <option disabled value="">-- choose a style --</option>
+	</select>
 
-<select name="size" ng-model="form.options.size" ng-options="form.displaySize(size) for size in form.sizes">
-    <option disabled value="">-- choose dimensions --</option>
-</select>
+	<select name="size" ng-model="form.options.size" ng-options="form.displaySize(size) for size in form.sizes">
+	    <option disabled value="">-- choose dimensions --</option>
+	</select>
 
-<select ng-show="form.requiresFeature(form.options.style)" name="feature" ng-model="form.options.feature" ng-options="feature for feature in form.features">
-    <option disabled value="">-- choose a feature --</option>
-</select>
+	<select ng-show="form.requiresFeature(form.options.style)" name="feature" ng-model="form.options.feature" ng-options="feature for feature in form.features">
+	    <option disabled value="">-- choose a feature --</option>
+	</select>
 
-<select name="zone" ng-model="form.options.zone" ng-options="'Zone '+zone for zone in [1,2,3,4,5,6,7]">
-    <option disabled value="">-- choose a zone --</option>
-</select>
+	<select name="zone" ng-model="form.options.zone" ng-options="'Zone '+zone for zone in [1,2,3,4,5,6,7]">
+	    <option disabled value="">-- choose a zone --</option>
+	</select>
 
-<div ng-show="form.prebuilt_available" class="horizontal-group">
-    <div class="radio-option">
-        <input ng-model="form.options.build_type" type="radio" name="build_type" value="AOS" id="buildtype_aos">
-        <label for="buildtype_aos">Assemble on site</label>
-    </div>
-    <div class="radio-option">
-        <input ng-model="form.options.build_type" type="radio" name="build_type" value="Prebuilt" id="buildtype_prebuilt">
-        <label for="buildtype_prebuilt">Prebuilt</label>
-    </div>
-</div>
+	<div ng-show="form.prebuilt_available" class="horizontal-group">
+	    <div class="radio-option">
+	        <input ng-model="form.options.build_type" type="radio" name="build_type" value="AOS" id="buildtype_aos">
+	        <label for="buildtype_aos">Assemble on site</label>
+	    </div>
+	    <div class="radio-option">
+	        <input ng-model="form.options.build_type" type="radio" name="build_type" value="Prebuilt" id="buildtype_prebuilt">
+	        <label for="buildtype_prebuilt">Prebuilt</label>
+	    </div>
+	</div>
 
-<div ng-show="form.finishable" class="horizontal-group">
-    <div class="radio-option">
-        <input ng-model="form.options.finish" type="radio" name="finish" value="paint" id="finish_paint">
-        <label for="finish_paint">Paint</label>
-    </div>
-    <div class="radio-option">
-        <input ng-model="form.options.finish" type="radio" name="finish" value="stain" id="finish_stain">
-        <label for="finish_stain">Stain</label>
-    </div>
+	<div ng-show="form.finishable" class="horizontal-group">
+	    <div class="radio-option">
+	        <input ng-model="form.options.finish" type="radio" name="finish" value="paint" id="finish_paint">
+	        <label for="finish_paint">Paint</label>
+	    </div>
+	    <div class="radio-option">
+	        <input ng-model="form.options.finish" type="radio" name="finish" value="stain" id="finish_stain">
+	        <label for="finish_stain">Stain</label>
+	    </div>
+	</div>
 </div>
 
 <button ng-click="form.nextSection()" class="next">Next Section</button>

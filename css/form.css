@@ -51,6 +51,10 @@ header {
           background-repeat: no-repeat;
           margin: -1em 0.4em;
           position: absolute; }
+        header nav ul li:last-child:after {
+          background: none;
+          width: 0;
+          height: 0; }
         header nav ul li.active {
           color: white; }
 
@@ -218,6 +222,11 @@ form#main {
       form#main section.center-floated-children .col {
         float: none;
         display: inline-block; }
+    form#main section#dimensions select {
+      font-size: 1.5em; }
+    form#main section#dimensions .options {
+      text-align: center;
+      margin-bottom: 2em; }
     form#main section .col {
       float: left;
       margin: 0 0.5em 1em 0.5em; }
@@ -251,8 +260,8 @@ form#main {
       background-color: rgba(200, 180, 160, 0.25) !important;
       cursor: default; }
   form#main .horizontal-group {
-    margin: 0 1em;
-    float: left; }
+    margin: 1em 1em 0;
+    display: inline-block; }
     form#main .horizontal-group > * {
       float: left; }
 
