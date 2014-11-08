@@ -9,6 +9,7 @@
 
         this.styles = [];
         this.sizes = [];
+        this.additions = {};
         this.prebuilt_available = false;
         this.finishable = false;
         this.features = ['Deluxe', 'Premier', 'Vinyl'];
@@ -21,8 +22,8 @@
             zone: 0,
             build_type: '',
             finish: '',
-        };
-        this.section = 0;
+        }; // gets populated by user's selections in first section
+        this.section = 0; // this section is currently active
 
 
         // Methods //
@@ -65,6 +66,11 @@
             }
             return true;
         }
+        this.getAdditions = function() {
+            $http.jsonp('http://peaceful-beyond-1028.herokuapp.com/components/?callback=JSON_CALLBACK', {params: {len: form.options.size.len, width: form.options.size.width, style: form.options.style}}).success(function(data){
+                form.additions = data; 
+            });
+        }
 
         $http.jsonp('http://peaceful-beyond-1028.herokuapp.com/styles/?callback=JSON_CALLBACK').success(function(data){
             form.styles = data;
@@ -104,6 +110,7 @@
                         else if (form.options.finish === 'stain')
                             total += parseInt(data.stain);
                         form.base_price = total;
+                        form.getAdditions();
                     });
                 }
             }, true // objectEquality http://stackoverflow.com/a/15721434
