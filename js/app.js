@@ -2,6 +2,9 @@
     var app = angular.module('order', []);
 
     app.controller('FormController', function($scope, $http) {
+
+        // Attributes //
+
         var form = this;
 
         this.styles = [];
@@ -20,6 +23,9 @@
             finish: '',
         };
         this.section = 0;
+
+
+        // Methods //
 
         this.isSelected = function(checkSection) {
             return this.section === checkSection;
@@ -66,6 +72,10 @@
         .error(function(data, status, headers, config){
             console.log(data);
         });
+
+
+
+        // Watches //
 
         $scope.$watch(
             function(scope) { return form.options.style },
@@ -114,73 +124,4 @@
 
     });
 
-    app.directive('dimensions', function() {
-        return {
-            restrict: 'A',
-            templateUrl: "views/dimensions.html"
-        };
-    });
-
-    app.directive('doors', function() {
-        return {
-            restrict: 'A',
-            templateUrl: "views/doors.html"
-        };
-    });
-
-    app.directive('windows', function() {
-        return {
-            restrict: 'A',
-            templateUrl: "views/windows.html"
-        };
-    });
-
-    app.directive('cupolas', function() {
-        return {
-            restrict: 'A',
-            templateUrl: "views/cupolas.html"
-        };
-    });
-
-    app.directive('shelves', function() {
-        return {
-            restrict: 'A',
-            templateUrl: "views/shelves.html"
-        };
-    });
-
-    app.directive('lofts', function() {
-        return {
-            restrict: 'A',
-            templateUrl: "views/lofts.html"
-        };
-    });
-
-    app.directive('roof', function() {
-        return {
-            restrict: 'A',
-            templateUrl: "views/roof.html"
-        };
-    });
-
-    app.directive('paint', function() {
-        return {
-            restrict: 'A',
-            templateUrl: "views/paint.html"
-        };
-    });
-
-    app.directive('misc', function() {
-        return {
-            restrict: 'A',
-            templateUrl: "views/misc.html"
-        };
-    });
-
-    app.directive('summary', function() {
-        return {
-            restrict: 'A',
-            templateUrl: "views/summary.html"
-        };
-    });
 })();

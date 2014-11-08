@@ -82,34 +82,34 @@
 
 	<form id="main">
 	    <!-- main content here -->
-	    <section dimensions ng-show="form.isSelected(0)" id="dimensions">
+	    <section ng-include="'views/dimensions.html'" ng-show="form.isSelected(0)" id="dimensions">
 	    </section>
 
-	    <section doors ng-show="form.isSelected(1)" id="doors">
+	    <section ng-include="'views/doors.html'" ng-show="form.isSelected(1)" id="doors">
 	    </section>
 
-	    <section windows ng-show="form.isSelected(2)" id="windows">
+	    <section ng-include="'views/windows.html'" ng-show="form.isSelected(2)" id="windows">
 	    </section>
 
-	    <section cupolas ng-show="form.isSelected(3)" id="cupolas">
+	    <section ng-include="'views/cupolas.html'" ng-show="form.isSelected(3)" id="cupolas">
 	    </section>
 
-	    <section shelves ng-show="form.isSelected(4)" id="shelves">
+	    <section ng-include="'views/shelves.html'" ng-show="form.isSelected(4)" id="shelves">
 	    </section>
 
-	    <section lofts ng-show="form.isSelected(5)" id="lofts">
+	    <section ng-include="'views/lofts.html'" ng-show="form.isSelected(5)" id="lofts">
 	    </section>
 
-	    <section roof ng-show="form.isSelected(6)" id="roof">
+	    <section ng-include="'views/roof.html'" ng-show="form.isSelected(6)" id="roof">
 	    </section>
 
-	    <section paint ng-show="form.isSelected(7)" id="paint">
+	    <section ng-include="'views/paint.html'" ng-show="form.isSelected(7)" id="paint">
 	    </section>
 
-	    <section misc ng-show="form.isSelected(8)" id="misc">
+	    <section ng-include="'views/misc.html'" ng-show="form.isSelected(8)" id="misc">
 	    </section>
 
-	    <section summary ng-show="form.isSelected(9)" id="summary">
+	    <section ng-include="'views/summary.html'" ng-show="form.isSelected(9)" id="summary">
 	    </section>
     </form>
 
