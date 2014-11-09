@@ -97,7 +97,8 @@ aside {
       margin-top: 0; }
   aside .option {
     display: table;
-    table-layout: fixed; }
+    table-layout: fixed;
+    margin-bottom: 0.25em; }
     aside .option > span {
       display: table-cell; }
     aside .option .quantity {
@@ -190,7 +191,8 @@ input[type=text], input[type=number] {
   font-size: 0.9em; }
 
 input[type=number] {
-  width: 40px; }
+  width: 40px;
+  margin-bottom: 0.5em; }
 
 form#main {
   padding: 0 1em;
@@ -210,7 +212,8 @@ form#main {
     color: #666; }
   form#main h3 {
     font-size: 1.2em;
-    font-weight: bold; }
+    font-weight: bold;
+    margin-bottom: 0.5em; }
     .checkbox-option + form#main h3 {
       margin-top: 1em; }
   form#main section {

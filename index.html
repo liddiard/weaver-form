@@ -18,15 +18,7 @@
 		<nav>
 			<ul>
 				<li ng-click="form.selectSection(0)" ng-class="{ active: form.isSelected(0) }" id="dimensions">Dimensions &amp; Layout</li>
-				<li ng-click="form.selectSection(1)" ng-class="{ active: form.isSelected(1) }" id="doors">Doors</li>
-				<li ng-click="form.selectSection(2)" ng-class="{ active: form.isSelected(2) }" id="windows">Windows</li>
-				<li ng-click="form.selectSection(3)" ng-class="{ active: form.isSelected(3) }" id="cupolas">Cupolas</li>
-				<li ng-click="form.selectSection(4)" ng-class="{ active: form.isSelected(4) }" id="shelves">Shelves</li>
-				<li ng-click="form.selectSection(5)" ng-class="{ active: form.isSelected(5) }" id="lofts">Lofts</li>
-				<li ng-click="form.selectSection(6)" ng-class="{ active: form.isSelected(6) }" id="roof">Roof</li>
-				<li ng-click="form.selectSection(7)" ng-class="{ active: form.isSelected(7) }" id="paint">Paint &amp; Stain</li>
-				<li ng-click="form.selectSection(8)" ng-class="{ active: form.isSelected(8) }" id="misc">Misc.</li>
-				<li ng-click="form.selectSection(9)" ng-class="{ active: form.isSelected(9) }" id="summary">Summary</li>
+                <li ng-repeat="(section, content) in form.additions" ng-class="{ active: form.isSelected($index+1) }">{{section}}</li>
 			</ul>
 		</nav>
 	</header>
@@ -36,30 +28,14 @@
 		<h2 class="barn-type">{{form.displaySize(form.options.size)}} {{form.options.style}} {{form.options.feature}}</h2>
 		<h3 ng-show="form.base_price" class="base-price">Base Price: {{form.base_price | currency:"$":0}}</h3>
 		<h4>Options</h4>
-		<h5>Windows</h5>
-		<div class="option">
-			<span class="quantity">1</span>
-			<span class="name">2x3 Window</span>
-			<span class="price">$85</span>
-		</div>
-		<h5>Doors</h5>
-		<div class="option">
-			<span class="quantity">1</span>
-			<span class="name">6' Extra Wide Door</span>
-			<span class="price">$90</span>
-		</div>
-		<h5>Structural</h5>
-		<div class="option">
-			<span class="quantity">1</span>
-			<span class="name">5' Sidewalls</span>
-			<span class="price">$150</span>
-		</div>
-		<h5>Misc.</h5>
-		<div class="option">
-			<span class="quantity">1</span>
-			<span class="name">3' Door Ramp</span>
-			<span class="price">$95</span>
-		</div>
+        <div ng-repeat="(section, content) in form.options.additions">
+            <h5>{{section}}</h5>
+            <div class="option" ng-repeat="(subsection, subcontent) in content">
+                <span class="quantity">1</span>
+                <span class="name">{{subcontent.name}}</span>
+                <span class="price">{{subcontent.price | currency:"$"}}</span>
+            </div>
+        </div>
 		<div class="totals">
 			<h2>Totals</h2>
 			<span class="options-subtotal">
@@ -81,36 +57,59 @@
 	</aside>
 
 	<form id="main">
+        {{ form.options.additions }}
 	    <!-- main content here -->
 	    <section ng-include="'views/dimensions.html'" ng-show="form.isSelected(0)" id="dimensions">
 	    </section>
 
-	    <section ng-include="'views/doors.html'" ng-show="form.isSelected(1)" id="doors">
-	    </section>
+        <section ng-repeat="(section, content) in form.additions" ng-show="form.isSelected($index+1)">
+            <h2>{{ section }}</h2>
+            <div class="form-element" ng-repeat="(subsection, subcontent) in content">
+                <h3>{{subsection}}</h3>
 
-	    <section ng-include="'views/windows.html'" ng-show="form.isSelected(2)" id="windows">
-	    </section>
+                <!-- checkbox -->
+                <div class="checkbox-option" ng-if="subcontent[0].form_type === 'checkbox'">
+                    <input id="{{subcontent[0].name}}" name="{{subsection}}" ng-value="{{subcontent[0]}}" ng-model="form.options.additions[section][subsection]" type="checkbox"/>
+                    <label for="{{subcontent[0].name}}">
+                        {{subcontent[0].name}}
+                        <span class="unit">[{{subcontent[0].price | currency:"$"}}]</span>
+                    </label>
+                </div>
+                
+                <!-- radio button -->
+                <div class="radio-option" ng-if="subcontent[0].form_type === 'radio'" ng-repeat="option in subcontent[0].options">
+                    <input id="{{option.name}}" name="{{subsection}}" ng-value="{{option}}" type="radio" ng-model="form.options.additions[section][subsection]"/>
+                    <label for="{{option.name}}">
+                        {{option.name}}
+                        <span class="unit">[{{option.price | currency:"$"}}]</span>
+                    </label>
+                </div>
 
-	    <section ng-include="'views/cupolas.html'" ng-show="form.isSelected(3)" id="cupolas">
-	    </section>
+                <!-- number range -->
+                <div class="number-option" ng-if="subcontent[0].form_type === 'numeric'">
+                    <input type="number"/>
+                    <span class="unit">
+                        [{{subcontent[0].price | currency:"$"}}<span ng-if="subcontent[0].pricing_type === 'each'">/ea.</span>]
+                    </span>
+                    <div class="radio-option" ng-if="subcontent[0].options.length" ng-repeat="option in subcontent[0].options">
+                        <input id="{{option.name}}" name="{{subsection}}" type="radio"/>
+                        <label for="{{option.name}}">
+                            {{option.name}}
+                            <span class="unit">[{{option.price | currency:"$"}}]</span>
+                        </label>
+                    </div>
+                </div>
 
-	    <section ng-include="'views/shelves.html'" ng-show="form.isSelected(4)" id="shelves">
-	    </section>
+                <!-- dropdown -->
+                <div class="select-option" ng-if="subcontent[0].form_type === 'select'">
+                    <select name="{{subsection}}" ng-model="form.options.additions[section][subsection]" ng-options="option.name for option in subcontent[0].options">
+                        <option disabled value="">-- make a selection --</option>
+                    </select>
+                </div>
 
-	    <section ng-include="'views/lofts.html'" ng-show="form.isSelected(5)" id="lofts">
-	    </section>
-
-	    <section ng-include="'views/roof.html'" ng-show="form.isSelected(6)" id="roof">
-	    </section>
-
-	    <section ng-include="'views/paint.html'" ng-show="form.isSelected(7)" id="paint">
-	    </section>
-
-	    <section ng-include="'views/misc.html'" ng-show="form.isSelected(8)" id="misc">
-	    </section>
-
-	    <section ng-include="'views/summary.html'" ng-show="form.isSelected(9)" id="summary">
-	    </section>
+            </div>
+            <button ng-click="form.nextSection()" class="next">Next Section</button>
+        </section>
     </form>
 
 </body>

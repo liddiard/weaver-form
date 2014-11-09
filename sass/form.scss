@@ -149,6 +149,7 @@ aside {
     .option {
         display: table;
         table-layout: fixed;
+        margin-bottom: 0.25em;
 
         & > span {
             display: table-cell;
@@ -280,6 +281,7 @@ input[type=text], input[type=number] {
 
 input[type=number] {
     width: 40px;
+    margin-bottom: 0.5em;
 }
 
 form#main {
@@ -308,6 +310,7 @@ form#main {
     h3 {
         font-size: 1.2em;
         font-weight: bold;
+        margin-bottom: 0.5em;
 
         .checkbox-option + & {
             margin-top: 1em;
