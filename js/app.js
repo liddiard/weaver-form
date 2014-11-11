@@ -124,6 +124,9 @@
                             total += parseInt(data.stain);
                         form.base_price = total;
                         form.getAdditions();
+                    })
+                    .error(function(data){
+                        console.log(data);
                     });
                 }
             }, true // objectEquality http://stackoverflow.com/a/15721434
