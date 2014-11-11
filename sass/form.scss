@@ -212,35 +212,38 @@ aside {
     }
 }
 
-label {
-    cursor: pointer;
-    position: relative;
-    padding: 0 10px 5px 25px;
-    display: inline-block;
 
-    &:before {
-        content: "";
+.radio-option, .checkbox-option {
+    label {
+        cursor: pointer;
+        position: relative;
+        padding: 0 10px 5px 25px;
         display: inline-block;
-        width: 16px; height: 16px;
-        background-color: rgba($FORM_ACCENT, 0.3);
-        box-shadow: 0 2px 6px 1px rgba(0,0,0, 0.4) inset;
-        color: $FORM_SELECT;
-        position: absolute;
-        left: 5px;
-        top: 3px;
 
-        .radio-option & {
-            border-radius: 50%;
+        &:before {
+            content: "";
+            display: inline-block;
+            width: 16px; height: 16px;
+            background-color: rgba($FORM_ACCENT, 0.3);
+            box-shadow: 0 2px 6px 1px rgba(0,0,0, 0.4) inset;
+            color: $FORM_SELECT;
+            position: absolute;
+            left: 5px;
+            top: 3px;
         }
 
-        .checkbox-option & {
-            border-radius: 2px;
+        &:hover {
+            background-color: rgba($FORM_ACCENT, 0.1);
         }
     }
+}
 
-    &:hover {
-        background-color: rgba($FORM_ACCENT, 0.1);
-    }
+.radio-option label:before {
+    border-radius: 50%;
+}
+
+.checkbox-option label:before {
+    border-radius: 2px;
 }
 
 input[type=radio], input[type=checkbox] {

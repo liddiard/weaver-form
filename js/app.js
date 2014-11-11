@@ -1,7 +1,7 @@
 (function(){
     var app = angular.module('order', []);
 
-    app.controller('FormController', function($scope, $http) {
+    app.controller('FormController', function($scope, $http, $filter) {
 
         // Attributes //
 
@@ -39,14 +39,14 @@
         };
         this.displaySize = function(size) {
             if (size) return size.width + "x" + size.len;
-        }
+        };
         this.requiresFeature = function(style) {
             for (var i = 0; i < this.noFeature.length; i++) {
                 if (style === this.noFeature[i])
                     return false;
             }
             return true;
-        }
+        };
         this.validBaseOptions = function() {
             if (!this.options.style.length || !this.options.size || !this.options.zone) {
                 console.log('missing style or size or zone');
@@ -65,12 +65,25 @@
                 return false;
             }
             return true;
-        }
+        };
+        this.displayPrice = function(component){ 
+            if (component.price === 0)
+                return;
+            var types = {
+                'sq_ft': 'sq. ft.',
+                'ln_ft': 'ln. ft.',
+                'each': 'ea.'
+            };
+            var formatted_currency = $filter('currency')(component.price, "$");
+            if (types.hasOwnProperty(component.pricing_type))
+                return "[" + formatted_currency + " /" + types[component.pricing_type] + "]";
+            else return "[" + formatted_currency + "]";
+        };
         this.getAdditions = function() {
-            $http.jsonp('http://peaceful-beyond-1028.herokuapp.com/components/?callback=JSON_CALLBACK', {params: {len: form.options.size.len, width: form.options.size.width, style: form.options.style}}).success(function(data){
+            $http.jsonp('http://peaceful-beyond-1028.herokuapp.com/new_components/?callback=JSON_CALLBACK', {params: {len: form.options.size.len, width: form.options.size.width, style: form.options.style, feature: form.options.feature}}).success(function(data){
                 form.additions = data; 
             });
-        }
+        };
 
         $http.jsonp('http://peaceful-beyond-1028.herokuapp.com/styles/?callback=JSON_CALLBACK').success(function(data){
             form.styles = data;

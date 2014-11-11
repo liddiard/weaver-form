@@ -136,12 +136,12 @@ aside {
     aside .totals .total {
       background-color: #fc0 !important; }
 
-label {
+.radio-option label, .checkbox-option label {
   cursor: pointer;
   position: relative;
   padding: 0 10px 5px 25px;
   display: inline-block; }
-  label:before {
+  .radio-option label:before, .checkbox-option label:before {
     content: "";
     display: inline-block;
     width: 16px;
@@ -152,12 +152,14 @@ label {
     position: absolute;
     left: 5px;
     top: 3px; }
-    .radio-option label:before {
-      border-radius: 50%; }
-    .checkbox-option label:before {
-      border-radius: 2px; }
-  label:hover {
+  .radio-option label:hover, .checkbox-option label:hover {
     background-color: rgba(200, 180, 160, 0.1); }
+
+.radio-option label:before {
+  border-radius: 50%; }
+
+.checkbox-option label:before {
+  border-radius: 2px; }
 
 input[type=radio], input[type=checkbox] {
   display: none;

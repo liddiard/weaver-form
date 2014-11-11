@@ -18,7 +18,7 @@
 		<nav>
 			<ul>
 				<li ng-click="form.selectSection(0)" ng-class="{ active: form.isSelected(0) }" id="dimensions">Dimensions &amp; Layout</li>
-                <li ng-repeat="(section, content) in form.additions" ng-class="{ active: form.isSelected($index+1) }">{{section}}</li>
+                <li ng-repeat="section in form.additions" ng-class="{ active: form.isSelected($index+1) }" ng-click="form.selectSection($index+1)">{{section.name}}</li>
 			</ul>
 		</nav>
 	</header>
@@ -62,48 +62,53 @@
 	    <section ng-include="'views/dimensions.html'" ng-show="form.isSelected(0)" id="dimensions">
 	    </section>
 
-        <section ng-repeat="(section, content) in form.additions" ng-show="form.isSelected($index+1)">
-            <h2>{{ section }}</h2>
-            <div class="form-element" ng-repeat="(subsection, subcontent) in content">
-                <h3>{{subsection}}</h3>
+        <section ng-repeat="section in form.additions" ng-show="form.isSelected($index+1)">
+            <h2>{{section.name}}</h2>
+            <div class="form-element" ng-repeat="subsection in section.subsections">
+                <h3>{{subsection.name}}</h3>
 
                 <!-- checkbox -->
-                <div class="checkbox-option" ng-if="subcontent[0].form_type === 'checkbox'">
-                    <input id="{{subcontent[0].name}}" name="{{subsection}}" ng-value="{{subcontent[0]}}" ng-model="form.options.additions[section][subsection]" type="checkbox"/>
-                    <label for="{{subcontent[0].name}}">
-                        {{subcontent[0].name}}
-                        <span class="unit">[{{subcontent[0].price | currency:"$"}}]</span>
+                <div class="checkbox-option" ng-if="component.form_type === 'checkbox'" ng-repeat="component in subsection.components">
+                    <input id="{{component.name}}" name="{{subsection.name}}" ng-value="component.name" type="checkbox"/>
+                    <label for="{{component.name}}">
+                        {{component.name}}
+                        <span class="unit">{{form.displayPrice(component)}}</span>
                     </label>
                 </div>
                 
                 <!-- radio button -->
-                <div class="radio-option" ng-if="subcontent[0].form_type === 'radio'" ng-repeat="option in subcontent[0].options">
-                    <input id="{{option.name}}" name="{{subsection}}" ng-value="{{option}}" type="radio" ng-model="form.options.additions[section][subsection]"/>
-                    <label for="{{option.name}}">
-                        {{option.name}}
-                        <span class="unit">[{{option.price | currency:"$"}}]</span>
-                    </label>
+                <div class="radio-options" ng-if="component.form_type === 'radio'" ng-repeat="component in subsection.components">
+                    <h4 ng-if="component.name !== subsection.name">{{component.name}}</h4>
+                    <div class="radio-option" ng-repeat="option in component.options">
+                        <input id="{{option.name}}" name="{{component}}" ng-value="option.name" type="radio"/>
+                        <label for="{{option.name}}">
+                            {{option.name}}
+                            <span class="unit">{{form.displayPrice(component)}}</span>
+                        </label>
+                    </div>
                 </div>
 
                 <!-- number range -->
-                <div class="number-option" ng-if="subcontent[0].form_type === 'numeric'">
-                    <input type="number"/>
-                    <span class="unit">
-                        [{{subcontent[0].price | currency:"$"}}<span ng-if="subcontent[0].pricing_type === 'each'">/ea.</span>]
-                    </span>
-                    <div class="radio-option" ng-if="subcontent[0].options.length" ng-repeat="option in subcontent[0].options">
-                        <input id="{{option.name}}" name="{{subsection}}" type="radio"/>
+                <div class="number-option" ng-if="component.form_type === 'numeric'" ng-repeat="component in subsection.components">
+                    <input id="{{component.name}}" type="number"/>
+                    <label for="{{component.name}}">
+                        {{component.name}}
+                        <span class="unit">{{form.displayPrice(component)}}</span>
+                    </label>
+                    <div class="radio-option" ng-if="component.options.length" ng-repeat="option in component.options">
+                        <input id="{{option.name}}" name="{{component.name}}" type="radio"/>
                         <label for="{{option.name}}">
                             {{option.name}}
-                            <span class="unit">[{{option.price | currency:"$"}}]</span>
+                            <span class="unit">{{form.displayPrice(component)}}</span>
                         </label>
                     </div>
                 </div>
 
                 <!-- dropdown -->
-                <div class="select-option" ng-if="subcontent[0].form_type === 'select'">
-                    <select name="{{subsection}}" ng-model="form.options.additions[section][subsection]" ng-options="option.name for option in subcontent[0].options">
-                        <option disabled value="">-- make a selection --</option>
+                <div class="select-option" ng-if="component.form_type === 'select'" ng-repeat="component in subsection.components">
+                    <h4 ng-if="component.name !== subsection.name">{{component.name}}</h4>
+                    <select name="{{component.name}}" ng-options="option.name for option in component.options" ng-model="form.select">
+                        <option value="">-- none --</option>
                     </select>
                 </div>
 
