@@ -84,7 +84,7 @@
                         <input id="{{option.name}}" name="{{component}}" ng-value="option.name" type="radio"/>
                         <label for="{{option.name}}">
                             {{option.name}}
-                            <span class="unit">{{form.displayPrice(component)}}</span>
+                            <span class="unit">{{form.displayPrice(option)}}</span>
                         </label>
                     </div>
                 </div>
@@ -100,7 +100,7 @@
                         <input id="{{option.name}}" name="{{component.name}}" type="radio"/>
                         <label for="{{option.name}}">
                             {{option.name}}
-                            <span class="unit">{{form.displayPrice(component)}}</span>
+                            <span class="unit">{{form.displayPrice(option)}}</span>
                         </label>
                     </div>
                 </div>
@@ -108,7 +108,7 @@
                 <!-- dropdown -->
                 <div class="select-option" ng-if="component.form_type === 'select'" ng-repeat="component in subsection.components">
                     <h4 ng-if="component.name !== subsection.name">{{component.name}}</h4>
-                    <select name="{{component.name}}" ng-options="option.name for option in component.options" ng-model="form.select">
+                    <select name="{{component.name}}" ng-options="option.name + ' ' + form.displayPrice(option) for option in component.options" ng-model="form.select">
                         <option value="">-- none --</option>
                     </select>
                 </div>

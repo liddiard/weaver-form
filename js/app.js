@@ -67,7 +67,7 @@
             return true;
         };
         this.displayPrice = function(component){ 
-            if (component.price === 0)
+            if (component.price === 0) 
                 return;
             var types = {
                 'sq_ft': 'sq. ft.',
@@ -91,7 +91,6 @@
         .error(function(data, status, headers, config){
             console.log(data);
         });
-
 
 
         // Watches //
