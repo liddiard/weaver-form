@@ -81,7 +81,7 @@
                 <div class="radio-options" ng-if="component.form_type === 'radio'" ng-repeat="component in subsection.components">
                     <h4 ng-if="component.name !== subsection.name">{{component.name}}</h4>
                     <div class="radio-option" ng-repeat="option in component.options">
-                        <input id="{{option.name}}" name="{{component}}" ng-value="option.name" type="radio"/>
+                        <input id="{{option.name}}" name="{{component.name}}" ng-value="option.name" type="radio"/>
                         <label for="{{option.name}}">
                             {{option.name}}
                             <span class="unit">{{form.displayPrice(option)}}</span>
