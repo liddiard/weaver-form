@@ -115,9 +115,7 @@
                 }
                 if (form.validBaseOptions()) {
                     $http.jsonp('http://peaceful-beyond-1028.herokuapp.com/prices/?callback=JSON_CALLBACK', {params: {style: form.options.style, width: form.options.size.width, len: form.options.size.len, feature: form.options.feature, zone: form.options.zone, build_type: form.options.build_type}}).success(function(data){
-                        var total;
-                        var base = parseInt(data.base);
-                        var total = base;
+                        var total = data.base;
                         if (form.options.finish === 'paint')
                             total += parseInt(data.paint);
                         else if (form.options.finish === 'stain')
