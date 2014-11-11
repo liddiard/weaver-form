@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="order">
 <head>
+    <title>Weaver Barns Order</title>
 	<link href='https://fonts.googleapis.com/css?family=Lato:300,400,700,400italic' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="css/form.css">
     <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
@@ -90,7 +91,7 @@
 
                 <!-- number range -->
                 <div class="number-option" ng-if="component.form_type === 'numeric'" ng-repeat="component in subsection.components">
-                    <input id="{{component.name}}" type="number"/>
+                    <input id="{{component.name}}" type="number" min="0"/>
                     <label for="{{component.name}}">
                         {{component.name}}
                         <span class="unit">{{form.displayPrice(component)}}</span>
@@ -110,6 +111,12 @@
                     <select name="{{component.name}}" ng-options="option.name for option in component.options" ng-model="form.select">
                         <option value="">-- none --</option>
                     </select>
+                </div>
+
+                <!-- text box -->
+                <div class="text-option" ng-if="component.form_type === 'text'" ng-repeat="component in subsection.components">
+                    <h4 ng-if="component.name !== subsection.name">{{component.name}}</h4>
+                    <input id="{{component.name}}" name="{{component.name}}" type="text"/>
                 </div>
 
             </div>
