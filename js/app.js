@@ -9,7 +9,6 @@
 
         this.styles = [];
         this.sizes = [];
-        this.additions = {};
         this.prebuilt_available = false;
         this.finishable = false;
         this.features = ['Deluxe', 'Premier', 'Vinyl'];

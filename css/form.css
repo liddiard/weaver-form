@@ -87,14 +87,15 @@ aside {
     font-size: 1em; }
   aside h4 {
     font-weight: 300;
-    margin-bottom: 0.75em; }
+    margin: 0.5em 0 0.25em; }
   aside h5 {
     font-weight: normal;
     font-style: italic;
     color: #839c00;
     margin: 0.75em 0 0 0; }
-    aside h5:first-of-type {
-      margin-top: 0; }
+  aside #options {
+    overflow-y: auto;
+    height: calc(100% - 300px); }
   aside .option {
     display: table;
     table-layout: fixed;

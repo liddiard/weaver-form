@@ -132,7 +132,7 @@ aside {
 
     h4 {
         font-weight: 300;
-        margin-bottom: 0.75em;
+        margin: 0.5em 0 0.25em;
     }
 
     h5 {
@@ -140,10 +140,11 @@ aside {
         font-style: italic;
         color: $GREEN_ACCENT_FOREGROUND;
         margin: 0.75em 0 0 0;
+    }
 
-        &:first-of-type {
-            margin-top: 0;
-        }
+    #options {
+        overflow-y: auto;
+        height: calc(100% - 300px);
     }
 
     .option {
