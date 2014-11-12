@@ -59,7 +59,7 @@
                     <div class="option" ng-if="component.form_type === 'select' && component.value" ng-repeat="component in subsection.components">
                         <span class="quantity">1</span>
                         <span class="name">{{component.name}}</span>
-                        <span class="price">{{component.price | currency:"$"}}</span>
+                        <span class="price">{{component.value.price | currency:"$"}}</span>
                     </div>
 
                 </div>
