@@ -36,25 +36,11 @@ header {
       padding: 0; }
       header nav ul li {
         display: inline-block;
-        padding: 1em;
+        padding: 1em 0 1em 1em;
         cursor: pointer;
         transition: color 0.25s; }
         header nav ul li:hover {
           color: #fed; }
-        header nav ul li:after {
-          content: ' ';
-          background: url("../img/section_arrow.svg");
-          display: inline-block;
-          background-size: contain;
-          width: 20px;
-          height: 51px;
-          background-repeat: no-repeat;
-          margin: -1em 0.4em;
-          position: absolute; }
-        header nav ul li:last-child:after {
-          background: none;
-          width: 0;
-          height: 0; }
         header nav ul li.active {
           color: white; }
 

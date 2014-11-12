@@ -58,29 +58,12 @@ header {
 
             li {
                 display: inline-block;
-                padding: 1em;
+                padding: 1em 0 1em 1em;
                 cursor: pointer;
                 transition: color 0.25s;
 
                 &:hover {
                     color: #fed;
-                }
-
-                &:after {
-                    content: ' ';
-                    background: url('../img/section_arrow.svg');
-                    display: inline-block;
-                    background-size: contain;
-                    width: 20px;
-                    height: 51px;
-                    background-repeat: no-repeat;
-                    margin: -1em 0.4em;
-                    position: absolute; 
-                }
-
-                &:last-child:after {
-                    background: none;
-                    width: 0; height: 0;
                 }
 
                 &.active {
