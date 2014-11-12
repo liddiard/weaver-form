@@ -7,6 +7,7 @@
 
         var form = this;
 
+        this.TAX_RATE = 6.75;
         this.styles = [];
         this.sizes = [];
         this.prebuilt_available = false;
@@ -82,6 +83,9 @@
             $http.jsonp('http://peaceful-beyond-1028.herokuapp.com/new_components/?callback=JSON_CALLBACK', {params: {len: form.options.size.len, width: form.options.size.width, style: form.options.style, feature: form.options.feature}}).success(function(data){
                 form.additions = data; 
             });
+        };
+        this.totalOptionsPrice = function() {
+            return;
         };
 
         $http.jsonp('http://peaceful-beyond-1028.herokuapp.com/styles/?callback=JSON_CALLBACK').success(function(data){
