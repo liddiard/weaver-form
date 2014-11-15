@@ -66,8 +66,8 @@
             }
             return true;
         };
-        this.displayPrice = function(component){ 
-            if (component.price === 0) 
+        this.displayPrice = function(component){
+            if (component.price === 0)
                 return;
             var types = {
                 'sq_ft': 'sq. ft.',
@@ -81,11 +81,19 @@
         };
         this.getAdditions = function() {
             $http.jsonp('http://peaceful-beyond-1028.herokuapp.com/new_components/?callback=JSON_CALLBACK', {params: {len: form.options.size.len, width: form.options.size.width, style: form.options.style, feature: form.options.feature}}).success(function(data){
-                form.additions = data; 
+                form.additions = data;
             });
         };
         this.totalOptionsPrice = function() {
             return;
+        };
+        this.submit = function() {
+            $http.jsonp('http://peaceful-beyond-1028.herokuapp.com/prices/?callback=JSON_CALLBACK', {data: {options: form.options, additions: form.additions}}).success(function(data){
+                alert(data);
+            })
+            .error(function(data, status, headers, config){
+                alert(data);
+            });
         };
 
         $http.jsonp('http://peaceful-beyond-1028.herokuapp.com/styles/?callback=JSON_CALLBACK').success(function(data){

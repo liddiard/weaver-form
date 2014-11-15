@@ -103,7 +103,7 @@
                         <span class="unit">{{form.displayPrice(component)}}</span>
                     </label>
                 </div>
-                
+
                 <!-- radio button -->
                 <div class="radio-options" ng-if="component.form_type === 'radio'" ng-repeat="component in subsection.components">
                     <h4 ng-if="component.name !== subsection.name">{{component.name}}</h4>
@@ -147,7 +147,8 @@
                 </div>
 
             </div>
-            <button ng-click="form.nextSection()" class="next">Next Section</button>
+            <button ng-if="!$last" ng-click="form.nextSection()" class="next">Next Section</button>
+            <button ng-if="$last" ng-click="form.submit()" class="next">Submit Order</button>
         </section>
     </form>
 
