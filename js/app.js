@@ -33,6 +33,7 @@
         };
         this.nextSection = function() {
             this.section++;
+            window.scroll(0, 0); // scroll to the top of the page
         };
         this.selectSection = function(setSection) {
             this.section = setSection;
