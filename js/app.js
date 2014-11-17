@@ -89,7 +89,7 @@
             return;
         };
         this.submit = function() {
-            $http.post('http://peaceful-beyond-1028.herokuapp.com/prices/', {data: {options: form.options, additions: form.additions}}).success(function(data){
+            $http({method: 'GET', url: 'http://peaceful-beyond-1028.herokuapp.com/prices/', data: {options: form.options, additions: form.additions}}).success(function(data){
                 alert(data);
             })
             .error(function(data, status, headers, config){
