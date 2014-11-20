@@ -90,10 +90,10 @@
         };
         this.submit = function() {
             $http.post('http://peaceful-beyond-1028.herokuapp.com/calculate_price/', {data: {options: form.options, additions: form.additions}}).success(function(data){
-                alert(data);
+                console.log(data);
             })
             .error(function(data, status, headers, config){
-                alert(data);
+                console.log(data);
             });
         };
 
