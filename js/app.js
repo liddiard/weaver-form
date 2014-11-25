@@ -3,11 +3,15 @@
 
     app.controller('FormController', function($scope, $http, $filter) {
 
+        // Constants //
+        this.TAX_RATE = 0.0675;
+        this.BASE_URL = "http://peaceful-beyond-1028.herokuapp.com/" // root of the api
+
+
         // Attributes //
 
         var form = this;
 
-        this.TAX_RATE = 6.75;
         this.styles = [];
         this.sizes = [];
         this.prebuilt_available = false;
@@ -15,6 +19,7 @@
         this.features = ['Deluxe', 'Premier', 'Vinyl'];
         this.noFeature = ['Porch', 'Porch 12/12 Pitch', 'Leanto']; // these styles don't have a feature selection
         this.base_price = 0;
+        this.total = {};
         this.options = {
             style: '',
             size: '',
@@ -23,6 +28,7 @@
             build_type: '',
             finish: '',
         }; // gets populated by user's selections in first section
+        this.additions = [];
         this.section = 0; // this section is currently active
 
 
@@ -81,7 +87,7 @@
             else return "[" + formatted_currency + "]";
         };
         this.getAdditions = function() {
-            $http.jsonp('http://peaceful-beyond-1028.herokuapp.com/new_components/?callback=JSON_CALLBACK', {params: {len: form.options.size.len, width: form.options.size.width, style: form.options.style, feature: form.options.feature}}).success(function(data){
+            $http.jsonp(BASE_URL + 'new_components/?callback=JSON_CALLBACK', {params: {len: form.options.size.len, width: form.options.size.width, style: form.options.style, feature: form.options.feature}}).success(function(data){
                 form.additions = data;
             });
         };
@@ -89,15 +95,10 @@
             return;
         };
         this.submit = function() {
-            $http.post('http://peaceful-beyond-1028.herokuapp.com/calculate_price/', {data: {options: form.options, additions: form.additions}}).success(function(data){
-                console.log(data);
-            })
-            .error(function(data, status, headers, config){
-                console.log(data);
-            });
+            alert('form submitted');
         };
 
-        $http.jsonp('http://peaceful-beyond-1028.herokuapp.com/styles/?callback=JSON_CALLBACK').success(function(data){
+        $http.jsonp(BASE_URL + 'styles/?callback=JSON_CALLBACK').success(function(data){
             form.styles = data;
         })
         .error(function(data, status, headers, config){
@@ -110,7 +111,7 @@
         $scope.$watch(
             function(scope) { return form.options.style },
             function() {
-                $http.jsonp('http://peaceful-beyond-1028.herokuapp.com/sizes/?callback=JSON_CALLBACK', {params: {style: form.options.style}}).success(function(data){
+                $http.jsonp(BASE_URL + 'sizes/?callback=JSON_CALLBACK', {params: {style: form.options.style}}).success(function(data){
                     form.sizes = data;
                 });
             }
@@ -120,12 +121,12 @@
             function(scope) { return form.options },
             function() {
                 if (form.options.style.length && form.options.size && form.options.feature) {
-                    $http.jsonp('http://peaceful-beyond-1028.herokuapp.com/finishable/?callback=JSON_CALLBACK', {params: {style: form.options.style, width: form.options.size.width, len: form.options.size.len, feature: form.options.feature}}).success(function(data){
+                    $http.jsonp(BASE_URL + 'finishable/?callback=JSON_CALLBACK', {params: {style: form.options.style, width: form.options.size.width, len: form.options.size.len, feature: form.options.feature}}).success(function(data){
                         form.finishable = data;
                     });
                 }
                 if (form.validBaseOptions()) {
-                    $http.jsonp('http://peaceful-beyond-1028.herokuapp.com/prices/?callback=JSON_CALLBACK', {params: {style: form.options.style, width: form.options.size.width, len: form.options.size.len, feature: form.options.feature, zone: form.options.zone, build_type: form.options.build_type}}).success(function(data){
+                    $http.jsonp(BASE_URL + 'prices/?callback=JSON_CALLBACK', {params: {style: form.options.style, width: form.options.size.width, len: form.options.size.len, feature: form.options.feature, zone: form.options.zone, build_type: form.options.build_type}}).success(function(data){
                         var total = data.base;
                         if (form.options.finish === 'paint')
                             total += parseInt(data.paint);
@@ -145,12 +146,24 @@
             function(scope) { return form.options.size },
             function() {
                 if (form.options.style.length) {
-                    $http.jsonp('http://peaceful-beyond-1028.herokuapp.com/prebuilt_available/?callback=JSON_CALLBACK', {params: {style: form.options.style, width: form.options.size.width, len: form.options.size.len}}).success(function(data){
+                    $http.jsonp(BASE_URL + 'prebuilt_available/?callback=JSON_CALLBACK', {params: {style: form.options.style, width: form.options.size.width, len: form.options.size.len}}).success(function(data){
                         form.prebuilt_available = data;
                         if (!form.prebuilt_available)
                             form.options.build_type = 'AOS';
                     });
                 }
+            }, true // objectEquality http://stackoverflow.com/a/15721434
+        );
+
+        $scope.$watch(
+            function(scope) { return form.additions },
+            function() {
+                $http.post(BASE_URL + 'calculate_price/', {data: {options: form.options, additions: form.additions}}).success(function(data){
+                    form.total = data;
+                })
+                .error(function(data, status, headers, config){
+                    console.log(data);
+                });
             }, true // objectEquality http://stackoverflow.com/a/15721434
         );
 
