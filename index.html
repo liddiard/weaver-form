@@ -138,6 +138,10 @@
                     <select name="{{component.name}}" ng-options="option.name + ' ' + form.displayPrice(option) for option in component.options" ng-model="component.value">
                         <option value="">-- none --</option>
                     </select>
+                    <label ng-show="component.value" for="{{component.name}}-quantity" class="quantity">
+                        Quantity:
+                    </label>
+                    <input ng-show="component.value" ng-model="component.quantity" id="{{component.name}}-quantity" type="number" min="0"/>
                 </div>
 
                 <!-- text box -->
@@ -145,12 +149,12 @@
                     <h4 ng-if="component.name !== subsection.name">{{component.name}}</h4>
                     <input id="{{component.name}}" name="{{component.name}}" ng-model="component.value" type="text" placeholder="Description"/>
 
-                    <label for="{{component.name}}-price" class="custom-price">
+                    <label for="{{component.name}}-price" class="price">
                         Price: $
                     </label>
                     <input id="{{component.name}}-price" type="number" min="0" class="custom-price" ng-model="component.price"/>
 
-                    <label for="{{component.name}}-quantity" class="custom-quantity">
+                    <label for="{{component.name}}-quantity" class="quantity">
                         Quantity:
                     </label>
                     <input id="{{component.name}}-quantity" type="number" min="0" class="custom-quantity" ng-model="component.quantity"/>

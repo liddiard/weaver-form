@@ -276,7 +276,7 @@ form#main {
     box-sizing: border-box;
     margin-right: $SIDEBAR_WIDTH;
 
-    .unit, label.custom-price, label.custom-quantity {
+    .unit, label.price, label.quantity {
         display: inline-block;
         color: gray;
         font-size: 0.9em;

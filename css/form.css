@@ -187,7 +187,7 @@ form#main {
   padding: 0 1em;
   box-sizing: border-box;
   margin-right: 300px; }
-  form#main .unit, form#main label.custom-price, form#main label.custom-quantity {
+  form#main .unit, form#main label.price, form#main label.quantity {
     display: inline-block;
     color: gray;
     font-size: 0.9em;
