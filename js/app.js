@@ -7,9 +7,7 @@
         this.TAX_RATE = 0.0675;
         this.BASE_URL = "http://peaceful-beyond-1028.herokuapp.com/" // root of the api
 
-
         // Attributes //
-
         var form = this;
 
         this.styles = [];
@@ -87,7 +85,7 @@
             else return "[" + formatted_currency + "]";
         };
         this.getAdditions = function() {
-            $http.jsonp(BASE_URL + 'new_components/?callback=JSON_CALLBACK', {params: {len: form.options.size.len, width: form.options.size.width, style: form.options.style, feature: form.options.feature}}).success(function(data){
+            $http.jsonp(form.BASE_URL + 'new_components/?callback=JSON_CALLBACK', {params: {len: form.options.size.len, width: form.options.size.width, style: form.options.style, feature: form.options.feature}}).success(function(data){
                 form.additions = data;
             });
         };
@@ -98,7 +96,7 @@
             alert('form submitted');
         };
 
-        $http.jsonp(BASE_URL + 'styles/?callback=JSON_CALLBACK').success(function(data){
+        $http.jsonp(form.BASE_URL + 'styles/?callback=JSON_CALLBACK').success(function(data){
             form.styles = data;
         })
         .error(function(data, status, headers, config){
@@ -111,7 +109,7 @@
         $scope.$watch(
             function(scope) { return form.options.style },
             function() {
-                $http.jsonp(BASE_URL + 'sizes/?callback=JSON_CALLBACK', {params: {style: form.options.style}}).success(function(data){
+                $http.jsonp(form.BASE_URL + 'sizes/?callback=JSON_CALLBACK', {params: {style: form.options.style}}).success(function(data){
                     form.sizes = data;
                 });
             }
@@ -121,12 +119,12 @@
             function(scope) { return form.options },
             function() {
                 if (form.options.style.length && form.options.size && form.options.feature) {
-                    $http.jsonp(BASE_URL + 'finishable/?callback=JSON_CALLBACK', {params: {style: form.options.style, width: form.options.size.width, len: form.options.size.len, feature: form.options.feature}}).success(function(data){
+                    $http.jsonp(form.BASE_URL + 'finishable/?callback=JSON_CALLBACK', {params: {style: form.options.style, width: form.options.size.width, len: form.options.size.len, feature: form.options.feature}}).success(function(data){
                         form.finishable = data;
                     });
                 }
                 if (form.validBaseOptions()) {
-                    $http.jsonp(BASE_URL + 'prices/?callback=JSON_CALLBACK', {params: {style: form.options.style, width: form.options.size.width, len: form.options.size.len, feature: form.options.feature, zone: form.options.zone, build_type: form.options.build_type}}).success(function(data){
+                    $http.jsonp(form.BASE_URL + 'prices/?callback=JSON_CALLBACK', {params: {style: form.options.style, width: form.options.size.width, len: form.options.size.len, feature: form.options.feature, zone: form.options.zone, build_type: form.options.build_type}}).success(function(data){
                         var total = data.base;
                         if (form.options.finish === 'paint')
                             total += parseInt(data.paint);
@@ -146,7 +144,7 @@
             function(scope) { return form.options.size },
             function() {
                 if (form.options.style.length) {
-                    $http.jsonp(BASE_URL + 'prebuilt_available/?callback=JSON_CALLBACK', {params: {style: form.options.style, width: form.options.size.width, len: form.options.size.len}}).success(function(data){
+                    $http.jsonp(form.BASE_URL + 'prebuilt_available/?callback=JSON_CALLBACK', {params: {style: form.options.style, width: form.options.size.width, len: form.options.size.len}}).success(function(data){
                         form.prebuilt_available = data;
                         if (!form.prebuilt_available)
                             form.options.build_type = 'AOS';
@@ -158,7 +156,7 @@
         $scope.$watch(
             function(scope) { return form.additions },
             function() {
-                $http.post(BASE_URL + 'calculate_price/', {data: {options: form.options, additions: form.additions}}).success(function(data){
+                $http.post(form.BASE_URL + 'calculate_price/', {data: {options: form.options, additions: form.additions}}).success(function(data){
                     form.total = data;
                 })
                 .error(function(data, status, headers, config){

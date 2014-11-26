@@ -68,19 +68,19 @@
 		<div class="totals">
 			<h2>Totals</h2>
 			<span class="options-subtotal">
-				Options Subtotal <span class="price">$456.00</span>
+				Options Subtotal <span class="price">{{form.total.options_subtotal | currency:"$"}}</span>
 			</span>
-			<span class="delivery">
+			<!--<span class="delivery">
 				Delivery <span class="price">$90.00</span>
-			</span>
+			</span>-->
 			<span class="subtotal-before-tax">
-				Subtotal Before Tax <span class="price">$3,895.00</span>
+				Subtotal Before Tax <span class="price">{{form.total.base + form.total.options_subtotal | currency:"$"}}</span>
 			</span>
 			<span class="tax">
-				Tax ({{form.TAX_RATE}}%) <span class="price">$475.00</span>
+				Tax ({{form.TAX_RATE}}%) <span class="price">{{form.total.tax | currency:"$"}}</span>
 			</span>
 			<span class="total">
-				<strong>Total</strong> <span class="price">{{form.base_price*form.TAX_RATE | currency:"$"}}</span>
+				<strong>Total</strong> <span class="price">{{form.total.base + form.total.options_subtotal + form.options.tax | currency:"$"}}</span>
 			</span>
 		</div>
 	</aside>
