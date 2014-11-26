@@ -77,7 +77,7 @@
 				Subtotal Before Tax <span class="price">{{form.total.base + form.total.options_subtotal | currency:"$"}}</span>
 			</span>
 			<span class="tax">
-				Tax ({{form.TAX_RATE}}%) <span class="price">{{form.total.tax | currency:"$"}}</span>
+				Tax ({{form.TAX_RATE*100}}%) <span class="price">{{form.total.tax | currency:"$"}}</span>
 			</span>
 			<span class="total">
 				<strong>Total</strong> <span class="price">{{form.total.base + form.total.options_subtotal + form.options.tax | currency:"$"}}</span>
