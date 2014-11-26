@@ -276,7 +276,7 @@ form#main {
     box-sizing: border-box;
     margin-right: $SIDEBAR_WIDTH;
 
-    .unit {
+    .unit, label.custom-price, label.custom-quantity {
         display: inline-block;
         color: gray;
         font-size: 0.9em;
@@ -380,6 +380,22 @@ form#main {
 
         & > * {
             float: left;
+        }
+    }
+
+    .text-option {
+        .button {
+            width: 24px; height: 24px;
+            cursor: pointer;
+
+            &.add {
+                display: block;
+            }
+
+            &.delete {
+                display: inline;
+                vertical-align: top;
+            }
         }
     }
 }

@@ -92,6 +92,15 @@
         this.totalOptionsPrice = function() {
             return;
         };
+        this.addCustomField = function(components) {
+            components.push({
+                "form_type": "text",
+                "price": 0
+            });
+        };
+        this.deleteCustomField = function(components, index) {
+            components.splice(index, 1);
+        }
         this.submit = function() {
             alert('form submitted');
         };
