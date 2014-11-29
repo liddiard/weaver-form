@@ -12,9 +12,9 @@
 
         this.styles = [];
         this.sizes = [];
-        this.prebuilt_available = false;
-        this.finishable = false;
-        this.features = ['Deluxe', 'Premier', 'Vinyl'];
+        this.prebuilt_available = false; // is prebuilt available by default? Can be changed by api call.
+        this.finishable = false; // is a finish selection availaable by default? Can be changed by api call.
+        this.features = ['Deluxe', 'Premier', 'Vinyl']; // available types of features
         this.noFeature = ['Porch', 'Porch 12/12 Pitch', 'Leanto']; // these styles don't have a feature selection
         this.base_price = 0;
         this.totals = {};
@@ -25,9 +25,9 @@
             zone: 0,
             build_type: '',
             finish: '',
-        }; // gets populated by user's selections in first section
+        }; // base options that get populated by user's selections in first section
         this.additions = [];
-        this.section = 0; // this section is currently active
+        this.section = 0; // currently displayed section
 
 
         // Methods //
