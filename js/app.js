@@ -17,7 +17,7 @@
         this.features = ['Deluxe', 'Premier', 'Vinyl'];
         this.noFeature = ['Porch', 'Porch 12/12 Pitch', 'Leanto']; // these styles don't have a feature selection
         this.base_price = 0;
-        this.total = {};
+        this.totals = {};
         this.options = {
             style: '',
             size: '',
@@ -89,9 +89,7 @@
                 form.additions = data;
             });
         };
-        this.totalOptionsPrice = function() {
-            return;
-        };
+
         this.addCustomField = function(components) {
             components.push({
                 "form_type": "text",
@@ -166,7 +164,8 @@
             function(scope) { return form.additions },
             function() {
                 $http.post(form.BASE_URL + 'calculate_price/', {data: {options: form.options, additions: form.additions}}).success(function(data){
-                    form.total = data;
+                    form.totals = data;
+                    console.log(form.totals);
                 })
                 .error(function(data, status, headers, config){
                     console.log(data);

@@ -28,59 +28,35 @@
 		<h2 class="customer">Customer: John Doe</h2>
 		<h2 class="barn-type">{{form.displaySize(form.options.size)}} {{form.options.style}} {{form.options.feature}}</h2>
 		<h3 ng-show="form.base_price" class="base-price">Base Price: {{form.base_price | currency:"$":0}}</h3>
+        <h4 ng-show="form.totals.sidebar_items">Options</h4>
         <div id="options">
-            <h4 ng-show="form.additions">Options</h4>
-            <div ng-repeat="section in form.additions">
-                <h5>{{section.name}}</h5>
-                <div ng-repeat="subsection in section.subsections">
-
-                    <!-- checkbox -->
-                    <div class="option" ng-if="component.form_type === 'checkbox' && component.value === true" ng-repeat="component in subsection.components">
-                        <span class="quantity">1</span>
+            <div ng-repeat="section in form.totals.sidebar_items">
+                <h5>{{section.category}}</h5>
+                <div ng-repeat="component in section.components">
+                    <div class="option">
+                        <span class="quantity">{{component.quantity}}</span>
                         <span class="name">{{component.name}}</span>
-                        <span class="price">{{component.price | currency:"$"}}</span>
+                        <span class="price">{{component.price}}</span>
                     </div>
-
-                    <!-- radio button -->
-                    <div class="option" ng-if="component.form_type === 'radio' && component.value" ng-repeat="component in subsection.components">
-                        <span class="quantity">1</span>
-                        <span class="name">{{component.value.name}}</span>
-                        <span class="price">{{component.value.price | currency:"$"}}</span>
-                    </div>
-
-                    <!-- number range -->
-                    <div class="option" ng-if="component.form_type === 'numeric' && component.value" ng-repeat="component in subsection.components">
-                        <span class="quantity">{{component.value}}</span>
-                        <span class="name">{{component.name}}</span>
-                        <span class="price">{{component.price*component.value | currency:"$"}}</span>
-                    </div>
-
-                    <!-- dropdown -->
-                    <div class="option" ng-if="component.form_type === 'select' && component.value" ng-repeat="component in subsection.components">
-                        <span class="quantity">1</span>
-                        <span class="name">{{component.name}}</span>
-                        <span class="price">{{component.value.price | currency:"$"}}</span>
-                    </div>
-
                 </div>
             </div>
         </div>
 		<div class="totals">
 			<h2>Totals</h2>
 			<span class="options-subtotal">
-				Options Subtotal <span class="price">{{form.total.options_subtotal | currency:"$"}}</span>
+				Options Subtotal <span class="price">{{form.totals.prices.options_subtotal}}</span>
 			</span>
 			<!--<span class="delivery">
 				Delivery <span class="price">$90.00</span>
 			</span>-->
-			<span class="subtotal-before-tax">
-				Subtotal Before Tax <span class="price">{{form.total.base + form.total.options_subtotal | currency:"$"}}</span>
+			<span class="finish">
+				Finish <span class="price">{{form.totals.prices.finish}}</span>
 			</span>
 			<span class="tax">
-				Tax ({{form.TAX_RATE*100}}%) <span class="price">{{form.total.tax | currency:"$"}}</span>
+				Tax ({{form.TAX_RATE*100}}%) <span class="price">{{form.totals.prices.tax}}</span>
 			</span>
 			<span class="total">
-				<strong>Total</strong> <span class="price">{{form.total.base + form.total.options_subtotal + form.options.tax | currency:"$"}}</span>
+				<strong>Total</strong> <span class="price">{{form.totals.prices.total}}</span>
 			</span>
 		</div>
 	</aside>
