@@ -42,4 +42,6 @@
 	</div>
 </div>
 
-<button ng-class="{disabled: !form.additions.length}" ng-click="form.nextSection()" class="next"><img ng-class="{active: form.validBaseOptions() && !form.additions.length}" class="spinner" src="img/spinner.gif"/> Next Section</button>
+<button ng-class="{disabled: !form.additions.length}" ng-click="form.nextSection()" class="next">
+	Next Section <img ng-class="{active: form.validBaseOptions() && !form.additions.length}" class="spinner" src="img/spinner.gif"/>
+</button>
