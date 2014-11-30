@@ -338,6 +338,7 @@ form#main {
     button.next {
         border: 0;
         color: white;
+        outline: none;
         background-color: $BRIGHT_GREEN_COLOR;
         font-size: 1.5em;
         font-family: inherit;
@@ -346,8 +347,8 @@ form#main {
         clear: both;
         margin: 0 auto;
         padding: 0.25em 0.5em;
-        -webkit-transition: background-color 0.2s;
-        transition: background-color 0.2s;
+        -webkit-transition: all 0.2s;
+        transition: all 0.2s;
 
         &:after {
             content: '';
@@ -369,8 +370,24 @@ form#main {
         }
 
         &.disabled {
-            background-color: rgba($FORM_ACCENT, 0.25) !important;
+            $background-color: rgba($FORM_ACCENT, 0.25) !important;
+            background-color: $background-color;
             cursor: default;
+
+            &:after {
+                border-color: transparent transparent transparent $background-color;
+            }
+        }
+
+        .spinner {
+            vertical-align: text-bottom;
+            width: 0;
+            transition: all 0.2s;
+            -webkit-transition: all 0.2s;
+
+            &.active {
+                width: initial;
+            }
         }
     }
 

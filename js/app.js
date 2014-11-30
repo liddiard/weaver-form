@@ -36,6 +36,8 @@
             return this.section === checkSection;
         };
         this.nextSection = function() {
+            if (!form.additions.length)
+                return; // don't do anything if there are no addition sections
             this.section++;
             window.scroll(0, 0); // scroll to the top of the page
         };

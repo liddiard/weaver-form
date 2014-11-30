@@ -225,6 +225,7 @@ form#main {
   form#main button.next {
     border: 0;
     color: white;
+    outline: none;
     background-color: #4a5e22;
     font-size: 1.5em;
     font-family: inherit;
@@ -233,8 +234,8 @@ form#main {
     clear: both;
     margin: 0 auto;
     padding: 0.25em 0.5em;
-    -webkit-transition: background-color 0.2s;
-    transition: background-color 0.2s; }
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s; }
     form#main button.next:after {
       content: '';
       margin: -0.25em 0.5em;
@@ -251,6 +252,15 @@ form#main {
     form#main button.next.disabled {
       background-color: rgba(200, 180, 160, 0.25) !important;
       cursor: default; }
+      form#main button.next.disabled:after {
+        border-color: transparent transparent transparent rgba(200, 180, 160, 0.25) !important; }
+    form#main button.next .spinner {
+      vertical-align: text-bottom;
+      width: 0;
+      transition: all 0.2s;
+      -webkit-transition: all 0.2s; }
+      form#main button.next .spinner.active {
+        width: initial; }
   form#main .horizontal-group {
     margin: 1em 1em 0;
     display: inline-block; }
