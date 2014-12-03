@@ -82,11 +82,17 @@
             var types = {
                 'sq_ft': 'sq. ft.',
                 'ln_ft': 'ln. ft.',
-                'each': 'ea.'
+                'each': 'ea.',
+                'percent': '%'
             };
             var formatted_currency = $filter('currency')(component.price, "$");
-            if (types.hasOwnProperty(component.pricing_type))
-                return "[" + formatted_currency + " /" + types[component.pricing_type] + "]";
+            if (types.hasOwnProperty(component.pricing_type)) {
+                if (component.pricing_type === 'percent')
+                    return "[" + component.price + "%]";
+                else {
+                    return "[" + formatted_currency + " /" + types[component.pricing_type] + "]";
+                }
+            }
             else return "[" + formatted_currency + "]";
         };
         this.getAdditions = function() {
@@ -94,14 +100,14 @@
                 form.additions = data;
             });
         };
-        this.addCustomField = function(components) {
-            components.push({
+        this.addCustomField = function(components, index) {
+            components.splice(index, 0, {
                 price: 0,
                 options: [],
                 // use the same properties as the first element (which comes from the API) for the following
                 form_type: "text",
-                name: components[0].name,
-                pricing_type: components[0].pricing_type
+                name: components[index].name,
+                pricing_type: components[index].pricing_type
             });
         };
         this.deleteCustomField = function(components, index) {

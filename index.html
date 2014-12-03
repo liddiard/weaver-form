@@ -135,7 +135,7 @@
                     </label>
                     <input id="{{component.name}}-quantity" type="number" min="0" class="custom-quantity" ng-model="component.quantity"/>
                     <img ng-if="!$first && subsection.components[$index-1].form_type === 'text'" ng-click="form.deleteCustomField(subsection.components, $index)" src="img/icon-delete.svg" class="button delete"/>
-                    <img ng-if="$last" ng-click="form.addCustomField(subsection.components)" src="img/icon-add.svg" class="button add"/>
+                    <img ng-if="$last" ng-click="form.addCustomField(subsection.components, $index)" src="img/icon-add.svg" class="button add"/>
                 </div>
 
             </div>
