@@ -72,11 +72,19 @@
                 <h3>{{subsection.name}}</h3>
 
                 <!-- checkbox -->
-                <div class="checkbox-option" ng-if="component.form_type === 'checkbox'" ng-repeat="component in subsection.components">
+                <div class="checkbox-option" ng-if="component.form_type === 'checkbox' || component.form_type === 'check_price' || component.form_type === 'check_length'" ng-repeat="component in subsection.components">
                     <input id="{{component.name}}" name="{{subsection.name}}" ng-value="component.name" ng-model="component.value" type="checkbox"/>
                     <label for="{{component.name}}">
                         {{component.name}}
                         <span class="unit">{{form.displayPrice(component)}}</span>
+                    </label>
+                    <label ng-if="component.form_type === 'check_price'" for="{{component.name}}-price" class="price">
+                        Price: $
+                    </label>
+                    <input ng-if="component.form_type === 'check_price'" ng-model="component.user_price" id="{{component.name}}-price" type="number" min="0"/>
+                    <input ng-if="component.form_type === 'check_length'" ng-model="component.len" id="{{component.name}}-length" type="number" min="0"/>
+                    <label ng-if="component.form_type === 'check_length'" for="{{component.name}}-length" class="quantity">
+                        ft.
                     </label>
                 </div>
 
