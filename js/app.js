@@ -98,6 +98,15 @@
         this.getAdditions = function() {
             $http.jsonp(form.BASE_URL + 'new_components/?callback=JSON_CALLBACK', {params: {len: form.options.size.len, width: form.options.size.width, style: form.options.style, feature: form.options.feature}}).success(function(data){
                 form.additions = data;
+                form.calculatePrice();
+            });
+        };
+        this.calculatePrice = function() {
+            $http.post(form.BASE_URL + 'calculate_price/', {data: {options: form.options, additions: form.additions}}).success(function(data){
+                form.totals = data;
+            })
+            .error(function(data, status, headers, config){
+                console.log(data);
             });
         };
         this.addCustomField = function(components, index) {
@@ -186,15 +195,8 @@
 
         $scope.$watch(
             function(scope) { return form.additions },
-            function() {
-                $http.post(form.BASE_URL + 'calculate_price/', {data: {options: form.options, additions: form.additions}}).success(function(data){
-                    form.totals = data;
-                    console.log(form.totals);
-                })
-                .error(function(data, status, headers, config){
-                    console.log(data);
-                });
-            }, true // objectEquality http://stackoverflow.com/a/15721434
+            form.calculatePrice,
+            true // objectEquality http://stackoverflow.com/a/15721434
         );
 
     });
