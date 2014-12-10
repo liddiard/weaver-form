@@ -89,11 +89,11 @@ aside {
     aside .option > span {
       display: table-cell; }
     aside .option .quantity {
-      width: 25px; }
+      width: 35px; }
       aside .option .quantity:after {
         content: ' \2013 '; }
     aside .option .name {
-      width: 180px; }
+      width: 160px; }
       aside .option .name:after {
         border-bottom: 1px dotted black;
         width: 100%;
