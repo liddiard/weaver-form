@@ -31,6 +31,7 @@
         }; // base options that get populated by user's selections in first section
         this.additions = [];
         this.section = 0; // currently displayed section
+        this.hasAcknowledgedBaseChangeWarning = false;
 
 
         // Methods //
@@ -56,6 +57,15 @@
                     return false;
             }
             return true;
+        };
+        this.confirmBaseChange = function($event) {
+            if (form.validBaseOptions() && !form.hasAcknowledgedBaseChangeWarning) {
+                var ok = confirm("You are about to modify this structure's base options. Doing so will reset any options currently selected in subsequent sections of the form.\n\nAre you sure you wish to proceed?");
+                if (ok)
+                    form.hasAcknowledgedBaseChangeWarning = true;
+                else
+                    $event.preventDefault();
+            }
         };
         this.validBaseOptions = function() {
             if (!this.options.style.length || !this.options.size || !this.options.zone) {
