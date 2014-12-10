@@ -313,6 +313,10 @@ form#main {
         }
     }
 
+    select {
+        margin-bottom: 1em;
+    }
+
     section {
         margin: 1em;
         clear: both;
@@ -329,7 +333,7 @@ form#main {
 
         &#dimensions {
             select {
-                font-size: 1.5em;
+                font-size: 1.4em;
             }
 
             .options {

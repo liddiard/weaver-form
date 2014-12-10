@@ -210,6 +210,8 @@ form#main {
     margin-bottom: 0.5em; }
     .checkbox-option + form#main h3 {
       margin-top: 1em; }
+  form#main select {
+    margin-bottom: 1em; }
   form#main section {
     margin: 1em;
     clear: both;
@@ -220,7 +222,7 @@ form#main {
         float: none;
         display: inline-block; }
     form#main section#dimensions select {
-      font-size: 1.5em; }
+      font-size: 1.4em; }
     form#main section#dimensions .options {
       text-align: center;
       margin-bottom: 2em; }
