@@ -101,11 +101,12 @@
             });
         };
         this.addCustomField = function(components, index) {
-            components.splice(index, 0, {
+            components.splice(index+1, 0, {
                 price: 0,
                 options: [],
-                // use the same properties as the first element (which comes from the API) for the following
                 form_type: "text",
+                duplicate: true,
+                // use the same properties as the first element (which comes from the API) for the following
                 name: components[index].name,
                 pricing_type: components[index].pricing_type
             });
