@@ -124,10 +124,12 @@
                         <select name="{{component.name}}" ng-options="option.id as option.name + ' ' + form.displayPrice(option) for option in component.options" ng-model="component.value">
                             <option value="">-- none --</option>
                         </select>
-                        <label ng-show="component.value" for="{{component.name}}-quantity" class="quantity">
-                            Quantity:
-                        </label>
-                        <input ng-show="component.value" ng-model="component.quantity" id="{{component.name}}-quantity" type="number" min="0"/>
+                        <span ng-if="component.requires_quantity && component.value">
+                            <label for="{{component.name}}-quantity" class="quantity">
+                                Quantity:
+                            </label>
+                            <input id="{{component.name}}-quantity" type="number" min="0"/>
+                        </span>
                     </div>
 
                     <!-- text box -->
