@@ -104,7 +104,7 @@
 
                     <!-- number range -->
                     <div class="number-option" ng-if="component.form_type === 'numeric'">
-                        <input id="{{component.name}}" ng-model="component.value" type="number" min="0" max="{{form.getMaximum(component)}}"/>
+                        <input id="{{component.name}}" ng-model="component.value" type="number" min="{{component.min || 0}}" max="{{component.max}}"/>
                         <label for="{{component.name}}">
                             {{component.name}}
                             <span class="unit">{{form.displayPrice(component)}}</span>

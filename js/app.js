@@ -16,9 +16,6 @@
         this.finishable = false; // is a finish selection availaable by default? Can be changed by api call.
         this.features = ['Deluxe', 'Premier', 'Vinyl']; // available types of features
         this.noFeature = ['Porch', 'Porch 12/12 Pitch', 'Leanto']; // these styles don't have a feature selection
-        this.hasMaximum = [ // these range-input components have a max value associated with them
-            {name: "Roof Pitch", max: 9},
-        ];
         this.base_price = 0;
         this.totals = {};
         this.options = {
@@ -132,15 +129,6 @@
         };
         this.deleteCustomField = function(components, index) {
             components.splice(index, 1);
-        };
-        this.getMaximum = function(component) {
-            // if the passed component has a minimum, return it
-            var name = component.name.toLowerCase();
-            for (var i = 0; i < form.hasMaximum.length; i++) {
-                if (name === form.hasMaximum[i].name.toLowerCase())
-                    return form.hasMaximum[i].max;
-            }
-            return;
         };
         this.submit = function() {
             alert('form submitted');
