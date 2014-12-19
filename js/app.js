@@ -4,7 +4,6 @@
     app.controller('FormController', function($scope, $http, $filter) {
 
         // Constants //
-        this.TAX_RATE = 0.0675;
         this.BASE_URL = "http://peaceful-beyond-1028.herokuapp.com/" // root of the api
 
         // Attributes //
