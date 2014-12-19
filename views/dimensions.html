@@ -5,7 +5,7 @@
 	    <option disabled value="">-- choose a style --</option>
 	</select>
 
-	<select ng-mousedown="form.confirmBaseChange($event)" name="size" ng-model="form.options.size" ng-options="form.displaySize(size) for size in form.sizes">
+	<select name="size" ng-model="form.options.size" ng-options="form.displaySize(size) for size in form.sizes">
 	    <option disabled value="">-- choose dimensions --</option>
 	</select>
 
@@ -13,7 +13,7 @@
 	    <option disabled value="">-- choose a feature --</option>
 	</select>
 
-	<select ng-mousedown="form.confirmBaseChange($event)" name="zone" ng-model="form.options.zone" ng-options="'Zone '+zone for zone in [1,2,3,4,5,6,7]">
+	<select name="zone" ng-model="form.options.zone" ng-options="'Zone '+zone for zone in [1,2,3,4,5,6,7]">
 	    <option disabled value="">-- choose a zone --</option>
 	</select>
 
@@ -22,22 +22,22 @@
 	<div ng-show="form.prebuilt_available" class="horizontal-group">
 	    <div class="radio-option">
 	        <input ng-model="form.options.build_type" type="radio" name="build_type" value="AOS" id="buildtype_aos">
-	        <label ng-mousedown="form.confirmBaseChange($event)" for="buildtype_aos">Assemble on site</label>
+	        <label for="buildtype_aos">Assemble on site</label>
 	    </div>
 	    <div class="radio-option">
 	        <input ng-model="form.options.build_type" type="radio" name="build_type" value="prebuilt" id="buildtype_prebuilt">
-	        <label ng-mousedown="form.confirmBaseChange($event)" for="buildtype_prebuilt">Prebuilt</label>
+	        <label for="buildtype_prebuilt">Prebuilt</label>
 	    </div>
 	</div>
 
 	<div ng-show="form.finishable" class="horizontal-group">
 	    <div class="radio-option">
 	        <input ng-model="form.options.finish" type="radio" name="finish" value="paint" id="finish_paint">
-	        <label ng-mousedown="form.confirmBaseChange($event)" for="finish_paint">Paint</label>
+	        <label for="finish_paint">Paint</label>
 	    </div>
 	    <div class="radio-option">
 	        <input ng-model="form.options.finish" type="radio" name="finish" value="stain" id="finish_stain">
-	        <label ng-mousedown="form.confirmBaseChange($event)" for="finish_stain">Stain</label>
+	        <label for="finish_stain">Stain</label>
 	    </div>
 	</div>
 </div>
