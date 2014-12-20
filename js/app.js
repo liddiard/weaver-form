@@ -164,9 +164,9 @@
                     $http.jsonp(form.BASE_URL + 'prices/?callback=JSON_CALLBACK', {params: {style: form.options.style, width: form.options.size.width, len: form.options.size.len, feature: form.options.feature, zone: form.options.zone, build_type: form.options.build_type}}).success(function(data){
                         var total = data.base;
                         if (form.options.finish === 'paint')
-                            total += parseInt(data.paint);
+                            total += data.paint;
                         else if (form.options.finish === 'stain')
-                            total += parseInt(data.stain);
+                            total += data.stain;
                         form.base_price = total;
                         form.getAdditions();
                     })
