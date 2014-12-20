@@ -5,6 +5,7 @@
 
         // Constants //
         this.BASE_URL = "http://peaceful-beyond-1028.herokuapp.com/" // root of the api
+        this.TAX_RATE = 0.0675;
 
         // Attributes //
         var form = this;
