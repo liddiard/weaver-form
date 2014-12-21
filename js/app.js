@@ -90,10 +90,8 @@
             */
 
             var price;
-            if (typeof component.options !== 'undefined' && component.options.length) {
-                console.log(index, component.options[index]);
+            if (typeof component.options !== 'undefined' && component.options.length)
                 price = component.options[index].price;
-            }
             else
                 price = component.price;
 
