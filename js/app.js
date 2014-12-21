@@ -83,19 +83,34 @@
             }
             return true;
         };
-        this.displayPrice = function(component){
-            if (component.price === 0)
-                return;
+        this.displayPrice = function(component, index){
+            /* If you're passing a component that has options, you must pass an
+            *  index parameter for the index of the option for which you want
+            *  to display the price.
+            */
+
+            var price;
+            if (typeof component.options !== 'undefined' && component.options.length) {
+                console.log(index, component.options[index]);
+                price = component.options[index].price;
+            }
+            else
+                price = component.price;
+
+            if (price === 0)
+                return; // don't display anything if price is zero
+
             var types = {
                 'sq_ft': 'sq. ft.',
                 'ln_ft': 'ln. ft.',
                 'each': 'ea.',
                 'percent': '%'
             };
-            var formatted_currency = $filter('currency')(component.price, "$");
+
+            var formatted_currency = $filter('currency')(price, "$");
             if (types.hasOwnProperty(component.pricing_type)) {
                 if (component.pricing_type === 'percent')
-                    return "[" + component.price + "%]";
+                    return "[" + price + "%]";
                 else {
                     return "[" + formatted_currency + " /" + types[component.pricing_type] + "]";
                 }
