@@ -29,17 +29,6 @@
 	        <label for="buildtype_prebuilt">Prebuilt</label>
 	    </div>
 	</div>
-
-	<div ng-show="form.finishable" class="horizontal-group">
-	    <div class="radio-option">
-	        <input ng-model="form.options.finish" type="radio" name="finish" value="paint" id="finish_paint">
-	        <label for="finish_paint">Paint</label>
-	    </div>
-	    <div class="radio-option">
-	        <input ng-model="form.options.finish" type="radio" name="finish" value="stain" id="finish_stain">
-	        <label for="finish_stain">Stain</label>
-	    </div>
-	</div>
 </div>
 
 <button ng-class="{disabled: !form.additions.length}" ng-click="form.nextSection()" class="next">Next Section <img ng-class="{active: form.validBaseOptions() && !form.additions.length}" class="spinner" src="img/spinner.gif"/></button>

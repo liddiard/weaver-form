@@ -13,7 +13,6 @@
         this.styles = [];
         this.sizes = [];
         this.prebuilt_available = false; // is prebuilt available by default? Can be changed by api call.
-        this.finishable = false; // is a finish selection availaable by default? Can be changed by api call.
         this.features = ['Deluxe', 'Premier', 'Vinyl']; // available types of features
         this.noFeature = ['Porch', 'Porch 12/12 Pitch', 'Leanto']; // these styles don't have a feature selection
         this.base_price = 0;
@@ -71,10 +70,6 @@
             }
             if (this.prebuilt_available && !this.options.build_type.length) {
                 console.log('missing build type');
-                return false;
-            }
-            if (this.finishable && !this.options.finish.length) {
-                console.log('missing finish');
                 return false;
             }
             if (this.requiresFeature(this.options.style) && !this.options.feature.length) {
@@ -146,6 +141,32 @@
         this.submit = function() {
             alert('form submitted');
         };
+        this.getPrices = function(success_callback) {
+            if (form.validBaseOptions()) {
+                $http.jsonp(form.BASE_URL + 'prices/?callback=JSON_CALLBACK', {params: {style: form.options.style, width: form.options.size.width, len: form.options.size.len, feature: form.options.feature, zone: form.options.zone, build_type: form.options.build_type}}).success(function(data){
+                    var total = data.base;
+                    if (form.options.finish === 'paint')
+                        total += data.paint;
+                    else if (form.options.finish === 'stain')
+                        total += data.stain;
+                        form.base_price = total;
+                        form.getAdditions();
+                        if (typeof success_callback === 'function')
+                            success_callback();
+                })
+                .error(function(data){
+                    console.log(data);
+                });
+            }
+
+        };
+        this.removeInitialFormChange = function() {
+            $scope.$watch(
+                function(scope) { return form.options.feature + form.options.style },
+                form.getPrices
+            );
+            clearAllBaseOptionsWatch();
+        }
 
         $http.jsonp(form.BASE_URL + 'styles/?callback=JSON_CALLBACK').success(function(data){
             form.styles = data;
@@ -166,29 +187,9 @@
             }
         );
 
-        $scope.$watch(
+        var clearAllBaseOptionsWatch = $scope.$watch(
             function(scope) { return form.options },
-            function() {
-                if (form.options.style.length && form.options.size && form.options.feature) {
-                    $http.jsonp(form.BASE_URL + 'finishable/?callback=JSON_CALLBACK', {params: {style: form.options.style, width: form.options.size.width, len: form.options.size.len, feature: form.options.feature}}).success(function(data){
-                        form.finishable = data;
-                    });
-                }
-                if (form.validBaseOptions()) {
-                    $http.jsonp(form.BASE_URL + 'prices/?callback=JSON_CALLBACK', {params: {style: form.options.style, width: form.options.size.width, len: form.options.size.len, feature: form.options.feature, zone: form.options.zone, build_type: form.options.build_type}}).success(function(data){
-                        var total = data.base;
-                        if (form.options.finish === 'paint')
-                            total += data.paint;
-                        else if (form.options.finish === 'stain')
-                            total += data.stain;
-                        form.base_price = total;
-                        form.getAdditions();
-                    })
-                    .error(function(data){
-                        console.log(data);
-                    });
-                }
-            }, true // objectEquality http://stackoverflow.com/a/15721434
+            function(){form.getPrices(form.removeInitialFormChange)}, true // objectEquality http://stackoverflow.com/a/15721434
         );
 
         $scope.$watch(
