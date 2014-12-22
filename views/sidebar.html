@@ -1,0 +1,35 @@
+<h1>Price Calculator</h1>
+<h2 class="customer">Customer: John Doe</h2>
+<h2 class="barn-type">{{form.displaySize(form.options.size)}} {{form.options.style}} {{form.options.feature}}</h2>
+<h3 ng-show="form.base_price" class="base-price">Base Price: {{form.base_price | currency:"$":0}}</h3>
+<h4 ng-show="form.totals.sidebar_items">Options</h4>
+<div id="options">
+    <div ng-repeat="section in form.totals.sidebar_items">
+        <h5>{{section.category}}</h5>
+        <div ng-repeat="component in section.components">
+            <div class="option">
+                <span class="quantity">{{component.quantity}}</span>
+                <span class="name">{{component.name}}</span>
+                <span class="price">{{component.price}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="totals">
+    <h2>Totals</h2>
+    <span class="finish">
+        Finish <span class="price">{{form.totals.prices.finish}}</span>
+    </span>
+    <span class="options-subtotal">
+        Options Subtotal <span class="price">{{form.totals.prices.options_subtotal}}</span>
+    </span>
+    <!--<span class="delivery">
+    Delivery <span class="price">$90.00</span>
+    </span>-->
+    <span class="tax">
+        Tax ({{form.TAX_RATE*100}}%) <span class="price">{{form.totals.prices.tax}}</span>
+    </span>
+    <span class="total">
+        <strong>Total</strong> <span class="price">{{form.totals.prices.total}}</span>
+    </span>
+</div>

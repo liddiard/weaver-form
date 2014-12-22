@@ -22,42 +22,7 @@
 			</ul>
 		</nav>
 	</header>
-	<aside class="price">
-		<h1>Price Calculator</h1>
-		<h2 class="customer">Customer: John Doe</h2>
-		<h2 class="barn-type">{{form.displaySize(form.options.size)}} {{form.options.style}} {{form.options.feature}}</h2>
-		<h3 ng-show="form.base_price" class="base-price">Base Price: {{form.base_price | currency:"$":0}}</h3>
-        <h4 ng-show="form.totals.sidebar_items">Options</h4>
-        <div id="options">
-            <div ng-repeat="section in form.totals.sidebar_items">
-                <h5>{{section.category}}</h5>
-                <div ng-repeat="component in section.components">
-                    <div class="option">
-                        <span class="quantity">{{component.quantity}}</span>
-                        <span class="name">{{component.name}}</span>
-                        <span class="price">{{component.price}}</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-		<div class="totals">
-			<h2>Totals</h2>
-            <span class="finish">
-                Finish <span class="price">{{form.totals.prices.finish}}</span>
-            </span>
-			<span class="options-subtotal">
-				Options Subtotal <span class="price">{{form.totals.prices.options_subtotal}}</span>
-			</span>
-			<!--<span class="delivery">
-				Delivery <span class="price">$90.00</span>
-			</span>-->
-			<span class="tax">
-				Tax ({{form.TAX_RATE*100}}%) <span class="price">{{form.totals.prices.tax}}</span>
-			</span>
-			<span class="total">
-				<strong>Total</strong> <span class="price">{{form.totals.prices.total}}</span>
-			</span>
-		</div>
+	<aside ng-include="'views/sidebar.html'" class="price">
 	</aside>
 
 	<form id="main">
@@ -65,95 +30,7 @@
 	    <section ng-include="'views/dimensions.html'" ng-show="form.isSelected(0)" id="dimensions">
 	    </section>
 
-        <section ng-repeat="section in form.additions" ng-show="form.isSelected($index+1)">
-            <h2>{{section.name}}</h2>
-            <div class="form-element" ng-repeat="subsection in section.subsections">
-                <h3>{{subsection.name}}</h3>
-
-                <div ng-repeat="component in subsection.components">
-
-                    <!-- checkbox -->
-                    <div class="checkbox-option" ng-if="component.form_type === 'checkbox' || component.form_type === 'check_price' || component.form_type === 'check_length'">
-                        <input id="{{component.name}}" name="{{subsection.name}}" ng-value="component.name" ng-model="component.value" type="checkbox"/>
-                        <label for="{{component.name}}">
-                            {{component.name}}
-                            <span class="unit">{{form.displayPrice(component)}}</span>
-                        </label>
-                        <label ng-if="component.form_type === 'check_price'" for="{{component.name}}-price" class="price">
-                            Price: $
-                        </label>
-                        <input ng-if="component.form_type === 'check_price'" ng-model="component.user_price" id="{{component.name}}-price" type="number" min="0"/>
-                        <input ng-if="component.form_type === 'check_length'" ng-model="component.len" id="{{component.name}}-length" type="number" min="0"/>
-                        <label ng-if="component.form_type === 'check_length'" for="{{component.name}}-length" class="quantity">
-                            ft.
-                        </label>
-                    </div>
-
-                    <!-- radio button -->
-                    <div class="radio-options" ng-if="component.form_type === 'radio'">
-                        <h4 ng-if="component.name !== subsection.name">{{component.name}}</h4>
-                        <div class="radio-option" ng-repeat="option in component.options">
-                            <input id="{{component.name + option.name}}" name="{{component.name}}" value="{{option.id}}" ng-model="component.value" type="radio"/>
-                            <label for="{{component.name + option.name}}">
-                                {{option.name}}
-                                <span class="unit">{{form.displayPrice(component, $index)}}</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- number range -->
-                    <div class="number-option" ng-if="component.form_type === 'numeric'">
-                        <input id="{{component.name}}" ng-model="component.value" type="number" min="{{component.min || 0}}" max="{{component.max}}"/>
-                        <label for="{{component.name}}">
-                            {{component.name}}
-                            <span class="unit">{{form.displayPrice(component)}}</span>
-                        </label>
-                        <div class="radio-option" ng-if="component.options.length" ng-repeat="option in component.options" ng-model="component.selected">
-                            <input id="{{component.name + option.name}}" name="{{component.name}}" type="radio"/>
-                            <label for="{{component.name + option.name}}">
-                                {{option.name}}
-                                <span class="unit">{{form.displayPrice(component, $index)}}</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- dropdown -->
-                    <div class="select-option" ng-if="component.form_type === 'select'">
-                        <h4 ng-if="component.name !== subsection.name">{{component.name}}</h4>
-                        <select name="{{component.name}}" ng-options="index as option.name + ' ' + form.displayPrice(component, index) for (index, option) in component.options" ng-model="component.value"><!-- http://stackoverflow.com/a/22080183 -->
-                            <option value="">-- none --</option>
-                        </select>
-                        <span ng-if="component.requires_quantity && component.value">
-                            <label for="{{component.name}}-quantity" class="quantity">
-                                Quantity:
-                            </label>
-                            <input id="{{component.name}}-quantity" type="number" min="0"/>
-                        </span>
-                    </div>
-
-                    <!-- text box -->
-                    <div class="text-option" ng-if="component.form_type === 'text'">
-                        <h4 ng-if="component.name !== subsection.name">{{component.name}}</h4>
-                        <input id="{{component.name}}" name="{{component.name}}" ng-model="component.value" type="text" placeholder="Description"/>
-
-                        <label for="{{component.name}}-price" class="price">
-                            Price: $
-                        </label>
-                        <input id="{{component.name}}-price" type="number" min="0" class="custom-price" ng-model="component.price"/>
-
-                        <label for="{{component.name}}-quantity" class="quantity">
-                            Quantity:
-                        </label>
-                        <input id="{{component.name}}-quantity" type="number" min="0" class="custom-quantity" ng-model="component.quantity"/>
-                        <img ng-if="component.duplicate && subsection.components[$index-1].form_type === 'text'" ng-click="form.deleteCustomField(subsection.components, $index)" src="img/icon-delete.svg" class="button delete"/>
-                        <img ng-if="component.duplicate && subsection.components[$index+1].form_type !== 'text'" ng-click="form.addCustomField(subsection.components, $index)" src="img/icon-add.svg" class="button add"/>
-                    </div>
-
-                </div><!-- end subsection.components ng-repeat -->
-
-            </div>
-            <button ng-if="!$last" ng-click="form.nextSection()" class="next">Next Section</button>
-            <button ng-if="$last" ng-click="form.submit()" class="next">Submit Order</button>
+        <section ng-include="'views/section.html'" ng-repeat="section in form.additions" ng-show="form.isSelected($index+1)">
         </section>
     </form>
 
