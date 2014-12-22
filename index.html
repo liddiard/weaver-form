@@ -19,6 +19,7 @@
 			<ul>
 				<li ng-click="form.selectSection(0)" ng-class="{ active: form.isSelected(0) }" id="dimensions">Dimensions &amp; Layout</li>
                 <li ng-repeat="section in form.additions" ng-class="{ active: form.isSelected($index+1) }" ng-click="form.selectSection($index+1)">{{section.name}}</li>
+                <li ng-show="form.additions.length" ng-click="form.selectSection(form.additions.length+1)" ng-class="{ active: form.isSelected(form.additions.length+1) }" id="fees">Pricing</li>
 			</ul>
 		</nav>
 	</header>
@@ -31,6 +32,9 @@
 	    </section>
 
         <section ng-include="'views/section.html'" ng-repeat="section in form.additions" ng-show="form.isSelected($index+1)">
+        </section>
+
+        <section ng-include="'views/fees.html'" ng-show="form.isSelected(form.additions.length+1)">
         </section>
     </form>
 

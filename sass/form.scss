@@ -276,7 +276,7 @@ input[type=text], input[type=number] {
 }
 
 input[type=number] {
-    width: 40px;
+    width: 60px;
     margin-bottom: 0.5em;
 }
 
@@ -328,6 +328,7 @@ form#main {
             .col {
                 float: none;
                 display: inline-block;
+                text-align: left;
             }
         }
 
@@ -344,7 +345,11 @@ form#main {
 
         .col {
             float: left;
-            margin: 0 0.5em 1em 0.5em;
+            margin: 0 0.5em 1em;
+
+            &.wide {
+                margin: 0 2em 3em;
+            }
         }
     }
 

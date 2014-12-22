@@ -26,6 +26,14 @@
             finish: '',
         }; // base options that get populated by user's selections in first section
         this.additions = [];
+        this.fees = {
+            sales_tax: 0,
+            delivery: 0,
+            advanced: {
+                percent: 0,
+                price: 0
+            }
+        };
         this.section = 0; // currently displayed section
         this.hasAcknowledgedBaseChangeWarning = false;
 
@@ -117,7 +125,7 @@
             });
         };
         this.calculatePrice = function() {
-            $http.post(form.BASE_URL + 'calculate_price/', {data: {options: form.options, additions: form.additions}}).success(function(data){
+            $http.post(form.BASE_URL + 'calculate_price/', {data: {options: form.options, additions: form.additions, fees: form.fees}}).success(function(data){
                 form.totals = data;
             })
             .error(function(data, status, headers, config){
@@ -207,6 +215,12 @@
 
         $scope.$watch(
             function(scope) { return form.additions },
+            form.calculatePrice,
+            true // objectEquality http://stackoverflow.com/a/15721434
+        );
+
+        $scope.$watch(
+            function(scope) { return form.fees },
             form.calculatePrice,
             true // objectEquality http://stackoverflow.com/a/15721434
         );

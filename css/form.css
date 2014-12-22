@@ -185,7 +185,7 @@ input[type=text], input[type=number] {
   font-size: 0.9em; }
 
 input[type=number] {
-  width: 40px;
+  width: 60px;
   margin-bottom: 0.5em; }
 
 form#main {
@@ -220,7 +220,8 @@ form#main {
       text-align: center; }
       form#main section.center-floated-children .col {
         float: none;
-        display: inline-block; }
+        display: inline-block;
+        text-align: left; }
     form#main section#dimensions select {
       font-size: 1.4em; }
     form#main section#dimensions .options {
@@ -228,7 +229,9 @@ form#main {
       margin-bottom: 2em; }
     form#main section .col {
       float: left;
-      margin: 0 0.5em 1em 0.5em; }
+      margin: 0 0.5em 1em; }
+      form#main section .col.wide {
+        margin: 0 2em 3em; }
   form#main button.next {
     border: 0;
     color: white;
