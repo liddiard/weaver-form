@@ -1,3 +1,45 @@
+#visual-editor {
+  position: absolute;
+  top: 20px;
+  right: 50%;
+  margin-right: -512px;
+  width: 1024px;
+  padding: 10px;
+  background-color: #fff8e4;
+  box-shadow: 0 15px 80px rgba(0, 0, 0, 0.5); }
+  #visual-editor .module {
+    background-color: white;
+    margin: 5px;
+    box-sizing: border-box;
+    border: 1px solid #84705c;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.25) inset;
+    padding: 20px; }
+  #visual-editor #sandbox {
+    overflow-x: auto; }
+  #visual-editor #blueprint {
+    float: left;
+    position: relative;
+    width: 622.8801px;
+    font-family: 'Coming Soon', sans-serif;
+    color: #374b5f; }
+    #visual-editor #blueprint #barn-outline {
+      position: relative;
+      border: 2px solid #374b5f;
+      height: 361px; }
+      #visual-editor #blueprint #barn-outline .dimensions {
+        position: absolute;
+        width: 100px;
+        height: 20px;
+        left: 50%;
+        top: 50%;
+        margin-left: -50px;
+        margin-top: -10px;
+        text-align: center; }
+  #visual-editor #components {
+    float: left;
+    width: 381.1199px;
+    overflow-y: auto; }
+
 body {
   margin: 0;
   border: 0;
@@ -79,6 +121,11 @@ aside {
     font-style: italic;
     color: #839C00;
     margin: 0.75em 0 0 0; }
+  aside button.visual-editor {
+    font-size: 1em;
+    margin: 0 auto;
+    display: block;
+    padding: 0.4em 0.8em; }
   aside #options {
     overflow-y: auto;
     height: calc(100% - 300px); }

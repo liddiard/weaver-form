@@ -1,12 +1,5 @@
-$GREEN_ACCENT_BACKGROUND: #637021;
-$GREEN_ACCENT_FOREGROUND: #839C00;
-$FORM_ACCENT: rgb(200,180,160);
-$FORM_SELECT: black;
-$MUTED_GREEN_COLOR: #3d4c2b;
-$BRIGHT_GREEN_COLOR: #4a5e22;
-$SIDEBAR_WIDTH: 300px;
-$helvetica: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-$lato: 'Lato', sans-serif;
+@import 'globals';
+@import 'visual_editor';
 
 body {
     margin: 0;
@@ -125,6 +118,13 @@ aside {
         margin: 0.75em 0 0 0;
     }
 
+    button.visual-editor {
+        font-size: 1em;
+        margin: 0 auto;
+        display: block;
+        padding: 0.4em 0.8em;
+    }
+
     #options {
         overflow-y: auto;
         height: calc(100% - 300px);
@@ -195,7 +195,6 @@ aside {
         }
     }
 }
-
 
 .radio-option, .checkbox-option {
     label {

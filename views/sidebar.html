@@ -2,6 +2,7 @@
 <h2 class="customer">Customer: John Doe</h2>
 <h2 class="barn-type">{{form.displaySize(form.options.size)}} {{form.options.style}} {{form.options.feature}}</h2>
 <h3 ng-show="form.base_price" class="base-price">Base Price: {{form.base_price | currency:"$":0}}</h3>
+<button class="visual-editor" ng-show="form.totals.sidebar_items">Visual Editor</button>
 <h4 ng-show="form.totals.sidebar_items">Options</h4>
 <div id="options">
     <div ng-repeat="section in form.totals.sidebar_items">
