@@ -36,6 +36,7 @@
         };
         this.section = 0; // currently displayed section
         this.hasAcknowledgedBaseChangeWarning = false;
+        this.visualEditorOpen = false;
 
 
         // Methods //
@@ -55,6 +56,9 @@
         this.displaySize = function(size) {
             if (size) return size.width + "x" + size.len;
         };
+        this.aspectRatio = function() {
+            return form.options.size.width / form.options.size.len;
+        }
         this.requiresFeature = function(style) {
             for (var i = 0; i < this.noFeature.length; i++) {
                 if (style === this.noFeature[i])
