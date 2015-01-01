@@ -12,6 +12,9 @@ $(document).ready(function(){
                 $(this).css('display', 'block');
             }
         });
+
+        $('.draggable').resizable();
+        
         $('#blueprint').droppable({
             accept: '.draggable',
             drop: function(event, ui){

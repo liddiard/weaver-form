@@ -1,5 +1,10 @@
 $GOLDEN_RATIO: 1.618;
 
+
+.draggable {
+    cursor: move;
+}
+
 #visual-editor {
     $width: 1024px;
     $module-margin: 5px;
