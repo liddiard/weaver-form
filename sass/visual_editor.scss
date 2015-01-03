@@ -5,6 +5,29 @@ $GOLDEN_RATIO: 1.618;
     cursor: move;
 }
 
+.component {
+    position: relative;
+    float: left;
+
+    & > img {
+        display: block;
+    }
+
+    .controls {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 10;
+        background-color: rgba(255,255,255,0.6);
+
+        & > img {
+            float: right;
+            width: 20px; height: 20px;
+            cursor: pointer;
+        }
+    }
+}
+
 #visual-editor {
     $width: 1024px;
     $module-margin: 5px;

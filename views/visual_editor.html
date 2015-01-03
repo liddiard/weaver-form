@@ -1,8 +1,20 @@
-<h1>Visual Editor</h1>
+<h1>Visual Editor {{form.top}}</h1>
 
 <div id="sandbox" class="module">
-    <img class="draggable component" src="img/door.png"/>
-    <img class="draggable component" src="img/skylight.png"/>
+    <div class="draggable component" style="top:{{form.top}}">
+        <div class="controls">
+            <img class="delete button" src="img/close.svg"/>
+            <img class="rotate button" src="img/rotate.svg"/>
+        </div>
+        <img class="component-image" src="img/door.png"/>
+    </div>
+    <div class="draggable component">
+        <div class="controls">
+            <img class="delete button" src="img/close.svg"/>
+            <img class="rotate button" src="img/rotate.svg"/>
+        </div>
+        <img class="component-image" src="img/skylight.png"/>
+    </div>
 </div>
 
 <div id="blueprint" class="module">
