@@ -150,6 +150,18 @@
         this.deleteCustomField = function(components, index) {
             components.splice(index, 1);
         };
+        this.incrementRange = function(component) {
+            var max = component.max || Infinity;
+            var value = component.value || 0;
+            if (value < max)
+                component.value++;
+        };
+        this.decrementRange = function(component) {
+            var min = component.min || 0;
+            var value = component.value || 0;
+            if (value > min)
+                component.value--;
+        };
         this.submit = function() {
             alert('form submitted');
         };

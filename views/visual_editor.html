@@ -26,5 +26,20 @@
 </div>
 
 <div id="components" class="module" style="height: {{(581/form.aspectRatio())+46}}px">
-    <h2>Dolor</h2>
+
+    <div ng-repeat="section in form.additions">
+        <h2>{{section.name}}</h2>
+        <div ng-repeat="subsection in section.subsections">
+            <!-- <h3>{{subsection.name}}</h3> -->
+            <div ng-repeat="component in subsection.components">
+                <h4 ng-if="component.image_url">{{component.name}}</h4>
+                <img ng-if="component.image_url" ng-src="{{component.image_url}}"/>
+                <div ng-repeat="option in component.options">
+                    <h5 ng-if="option.image_url">{{option.name}}</h5>
+                    <img ng-if="option.image_url" ng-src="{{option.image_url}}"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>

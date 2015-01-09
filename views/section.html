@@ -35,7 +35,11 @@
 
         <!-- number range -->
         <div class="number-option" ng-if="component.form_type === 'numeric'">
-            <input id="{{component.name}}" ng-model="component.value" type="number" min="{{component.min || 0}}" max="{{component.max}}"/>
+            <div class="incrementor">
+                <span class="value">{{component.value || 0}}</span>
+                <img ng-click="form.incrementRange(component)" src="img/icon-add.svg"/>
+                <img ng-click="form.decrementRange(component)" src="img/icon-subtract.svg"/>
+            </div>
             <label for="{{component.name}}">
                 {{component.name}}
                 <span class="unit">{{form.displayPrice(component)}}</span>

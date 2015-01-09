@@ -352,6 +352,20 @@ form#main {
     form#main .text-option .button.delete {
       display: inline;
       vertical-align: top; }
+  form#main .incrementor {
+    display: inline-block;
+    margin: 0.5em 0; }
+    form#main .incrementor img {
+      width: 18px;
+      height: 18px;
+      vertical-align: text-bottom;
+      cursor: pointer; }
+    form#main .incrementor .value {
+      font-weight: bold;
+      color: gray;
+      font-size: 1.2em;
+      margin-right: 0.25em;
+      cursor: default; }
 
 table.celled {
   border-collapse: collapse; }
