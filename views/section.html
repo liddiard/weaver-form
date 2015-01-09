@@ -37,8 +37,8 @@
         <div class="number-option" ng-if="component.form_type === 'numeric'">
             <div class="incrementor">
                 <span class="value">{{component.value || 0}}</span>
-                <img ng-click="form.incrementRange(component)" src="img/icon-add.svg"/>
-                <img ng-click="form.decrementRange(component)" src="img/icon-subtract.svg"/>
+                <img ng-click="form.incrementRange(component, 'value')" src="img/icon-add.svg"/>
+                <img ng-click="form.decrementRange(component, 'value')" src="img/icon-subtract.svg"/>
             </div>
             <label for="{{component.name}}">
                 {{component.name}}

@@ -150,17 +150,34 @@
         this.deleteCustomField = function(components, index) {
             components.splice(index, 1);
         };
-        this.incrementRange = function(component) {
+        this.incrementRange = function(component, key) {
             var max = component.max || Infinity;
-            var value = component.value || 0;
-            if (value < max)
-                component.value++;
+            var value = component[key] || 0;
+            if (value < max) {
+                component[key]++;
+                form.pushImage(component);
+            }
         };
-        this.decrementRange = function(component) {
+        this.decrementRange = function(component, key) {
             var min = component.min || 0;
-            var value = component.value || 0;
-            if (value > min)
-                component.value--;
+            var value = component[key] || 0;
+            if (value > min) {
+                component[key]--;
+                form.popImage(component);
+            }
+        };
+        this.pushImage = function(component) {
+            if (!component.images)
+                component.images = [];
+            component.images.push({
+                placed: false,
+                top: 0,
+                right: 0,
+                rotation: 0,
+            });
+        };
+        this.popImage = function(component) {
+            component.images.pop();
         };
         this.submit = function() {
             alert('form submitted');
