@@ -1,19 +1,15 @@
 <h1>Visual Editor {{form.top}}</h1>
 
 <div id="sandbox" class="module">
-    <div class="draggable component" style="top:{{form.top}}">
-        <div class="controls">
-            <img class="delete button" src="img/close.svg"/>
-            <img class="rotate button" src="img/rotate.svg"/>
+    <div ng-repeat="section in form.additions">
+        <div ng-repeat="subsection in section.subsections">
+            <div ng-repeat="component in subsection.components">
+                <div ng-repeat="image in component.images"
+                     ng-include="'views/visual_component.html'"
+                     class="draggable component">
+                 </div>
+            </div>
         </div>
-        <img class="component-image" src="img/door.png"/>
-    </div>
-    <div class="draggable component">
-        <div class="controls">
-            <img class="delete button" src="img/close.svg"/>
-            <img class="rotate button" src="img/rotate.svg"/>
-        </div>
-        <img class="component-image" src="img/skylight.png"/>
     </div>
 </div>
 

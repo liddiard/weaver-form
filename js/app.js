@@ -154,16 +154,16 @@
             var max = component.max || Infinity;
             var value = component[key] || 0;
             if (value < max) {
-                component[key]++;
-                form.pushImage(component);
+                component[key] = value + 1;
+                if (component.image_url) form.pushImage(component);
             }
         };
         this.decrementRange = function(component, key) {
             var min = component.min || 0;
             var value = component[key] || 0;
             if (value > min) {
-                component[key]--;
-                form.popImage(component);
+                component[key] = value - 1;
+                if (component.image_url) form.popImage(component);
             }
         };
         this.pushImage = function(component) {
