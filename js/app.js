@@ -179,6 +179,12 @@
         this.popImage = function(component) {
             component.images.pop();
         };
+        this.deleteImage = function(component, index) {
+            component.images.splice(index, 1);
+        };
+        this.rotateImage = function(component, index) {
+            component.images[index].rotation++;
+        };
         this.submit = function() {
             alert('form submitted');
         };

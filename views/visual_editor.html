@@ -5,6 +5,7 @@
         <div ng-repeat="subsection in section.subsections">
             <div ng-repeat="component in subsection.components">
                 <div ng-repeat="image in component.images"
+                     ng-if="!image.placed"
                      ng-include="'views/visual_component.html'"
                      class="draggable component">
                  </div>
@@ -15,6 +16,21 @@
 
 <div id="blueprint" class="module">
     <div id="barn-outline" style="height: {{581/form.aspectRatio()}}px">
+        <div ng-repeat="section in form.additions">
+            <div ng-repeat="subsection in section.subsections">
+                <div ng-repeat="component in subsection.components">
+                    <div ng-repeat="image in component.images"
+                         ng-if="image.placed"
+                         ng-include="'views/visual_component.html'"
+                         class="draggable component"
+                         style="position: absolute;
+                                top: {{image.top}};
+                                right: {{image.right}};
+                                transform: rotate({{90*image.rotation}}px);">
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="dimensions">
             {{form.displaySize(form.options.size)}}
         </div>
