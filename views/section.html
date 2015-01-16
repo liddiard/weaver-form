@@ -77,7 +77,7 @@
             </label>
             <input id="{{component.name}}-price" type="number" min="0" class="custom-price" ng-model="component.price"/>
 
-            <div class="incrementor">
+            <div class="incrementor" ng-if="component.requires_quantity">
                 Quantity:
                 <img ng-click="form.decrementRange(component, 'quantity')" src="img/icon-subtract.svg"/>
                 <span class="value">{{component.quantity || 0}}</span>
