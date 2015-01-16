@@ -294,6 +294,15 @@ form#main {
     form#main section#dimensions .options {
       text-align: center;
       margin-bottom: 2em; }
+      form#main section#dimensions .options .barn-styles {
+        overflow: hidden;
+        margin-bottom: 1.5em; }
+        form#main section#dimensions .options .barn-styles .radio-option {
+          display: inline-block; }
+          form#main section#dimensions .options .barn-styles .radio-option label {
+            padding: 0.5em; }
+            form#main section#dimensions .options .barn-styles .radio-option label:before {
+              content: initial; }
     form#main section .col {
       float: left;
       margin: 0 0.5em 1em; }

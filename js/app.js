@@ -274,7 +274,7 @@
         }
 
         // get the initial barn styles on page load
-        $http.jsonp(form.BASE_URL + 'styles/?callback=JSON_CALLBACK').success(function(data){
+        $http.jsonp(form.BASE_URL + 'styles_with_images/?callback=JSON_CALLBACK').success(function(data){
             form.styles = data;
         })
         .error(function(data, status, headers, config){

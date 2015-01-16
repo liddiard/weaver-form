@@ -339,6 +339,23 @@ form#main {
             .options {
                 text-align: center;
                 margin-bottom: 2em;
+
+                .barn-styles {
+                    overflow: hidden;
+                    margin-bottom: 1.5em;
+
+                    .radio-option {
+                        display: inline-block;
+
+                        label {
+                            padding: 0.5em;
+
+                            &:before {
+                                content: initial;
+                            }
+                        }
+                    }
+                }
             }
         }
 

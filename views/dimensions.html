@@ -1,9 +1,20 @@
 <h2>Dimensions &amp; Layout</h2>
 
 <div class="options">
-	<select ng-mousedown="form.confirmBaseChange($event)" name="style" ng-model="form.options.style" ng-options="style for style in form.styles">
-	    <option disabled value="">-- choose a style --</option>
-	</select>
+	<h3>Choose a style</h3>
+
+	<div class="barn-styles">
+		<div ng-repeat="style in form.styles" class="radio-option">
+			<input ng-model="form.options.style"
+				   type="radio"
+				   name="barn_styles"
+				   id="{{style.name}}"
+				   value="{{style.name}}"/>
+			<label for="{{style.name}}" ng-mousedown="form.confirmBaseChange($event)">
+				<img ng-src="{{form.BASE_URL + style.url}}"/>
+			</label>
+		</div>
+	</div>
 
 	<select name="size" ng-model="form.options.size" ng-options="form.displaySize(size) for size in form.sizes">
 	    <option disabled value="">-- choose dimensions --</option>
