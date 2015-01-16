@@ -56,7 +56,7 @@
         <!-- dropdown -->
         <div class="select-option" ng-if="component.form_type === 'select'">
             <h4 ng-if="component.name !== subsection.name">{{component.name}}</h4>
-            <select name="{{component.name}}" ng-options="index as option.name + ' ' + form.displayPrice(component, index) for (index, option) in component.options" ng-model="component.value"><!-- http://stackoverflow.com/a/22080183 -->
+            <select name="{{component.name}}" ng-options="option.id as option.name + ' ' + form.displayPrice(component, index) for (index, option) in component.options" ng-model="component.value"><!-- http://stackoverflow.com/a/22080183 -->
                 <option value="">-- none --</option>
             </select>
             <div class="incrementor" ng-if="component.requires_quantity && component.value">
