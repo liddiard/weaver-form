@@ -11,6 +11,8 @@ You may NOT sub-license, resell, rent, redistribute or otherwise transfer the ic
 
 	 width="512px" height="512px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
 
-<rect fill="gray" id="minus-2-icon" x="50" y="209.529" width="412" height="92.941"/>
+<path fill="gray" id="minus-4-icon" d="M256,50C142.229,50,50,142.229,50,256s92.229,206,206,206s206-92.229,206-206S369.771,50,256,50z
+
+	 M382.601,293.432H135.399v-68.862h247.201V293.432z"/>
 
 </svg>

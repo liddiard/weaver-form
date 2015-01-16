@@ -36,9 +36,9 @@
         <!-- number range -->
         <div class="number-option" ng-if="component.form_type === 'numeric'">
             <div class="incrementor">
+                <img ng-click="form.decrementRange(component, 'value')" src="img/icon-subtract.svg"/>
                 <span class="value">{{component.value || 0}}</span>
                 <img ng-click="form.incrementRange(component, 'value')" src="img/icon-add.svg"/>
-                <img ng-click="form.decrementRange(component, 'value')" src="img/icon-subtract.svg"/>
             </div>
             <label for="{{component.name}}">
                 {{component.name}}
@@ -61,9 +61,9 @@
             </select>
             <div class="incrementor" ng-if="component.requires_quantity && component.value">
                 Quantity:
+                <img ng-click="form.decrementRange(component, 'quantity')" src="img/icon-subtract.svg"/>
                 <span class="value">{{component.quantity || 0}}</span>
                 <img ng-click="form.incrementRange(component, 'quantity')" src="img/icon-add.svg"/>
-                <img ng-click="form.decrementRange(component, 'quantity')" src="img/icon-subtract.svg"/>
             </div>
         </div>
 
@@ -79,9 +79,9 @@
 
             <div class="incrementor" ng-if="component.requires_quantity && component.value">
                 Quantity:
+                <img ng-click="form.decrementRange(component, 'quantity')" src="img/icon-subtract.svg"/>
                 <span class="value">{{component.quantity || 0}}</span>
                 <img ng-click="form.incrementRange(component, 'quantity')" src="img/icon-add.svg"/>
-                <img ng-click="form.decrementRange(component, 'quantity')" src="img/icon-subtract.svg"/>
             </div>
             <input id="{{component.name}}-quantity" type="number" min="0" class="custom-quantity" ng-model="component.quantity"/>
             <img ng-if="component.duplicate && subsection.components[$index-1].form_type === 'text'" ng-click="form.deleteCustomField(subsection.components, $index)" src="img/icon-delete.svg" class="button delete"/>
