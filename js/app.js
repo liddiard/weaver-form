@@ -179,7 +179,8 @@
                 duplicate: true,
                 // use the same properties as the first element (which comes from the API) for the following
                 name: components[index].name,
-                pricing_type: components[index].pricing_type
+                pricing_type: components[index].pricing_type,
+                requires_quantity: components[index].requires_quantity
             });
         };
         this.deleteCustomField = function(components, index) {
