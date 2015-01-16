@@ -77,15 +77,14 @@
             </label>
             <input id="{{component.name}}-price" type="number" min="0" class="custom-price" ng-model="component.price"/>
 
-            <div class="incrementor" ng-if="component.requires_quantity && component.value">
+            <div class="incrementor">
                 Quantity:
                 <img ng-click="form.decrementRange(component, 'quantity')" src="img/icon-subtract.svg"/>
                 <span class="value">{{component.quantity || 0}}</span>
                 <img ng-click="form.incrementRange(component, 'quantity')" src="img/icon-add.svg"/>
             </div>
-            <input id="{{component.name}}-quantity" type="number" min="0" class="custom-quantity" ng-model="component.quantity"/>
             <img ng-if="component.duplicate && subsection.components[$index-1].form_type === 'text'" ng-click="form.deleteCustomField(subsection.components, $index)" src="img/icon-delete.svg" class="button delete"/>
-            <img ng-if="component.duplicate && subsection.components[$index+1].form_type !== 'text'" ng-click="form.addCustomField(subsection.components, $index)" src="img/icon-add.svg" class="button add"/>
+            <img ng-if="component.duplicate && subsection.components[$index+1].form_type !== 'text'" ng-click="form.addCustomField(subsection.components, $index)" src="img/icon-plus.svg" class="button add"/>
         </div>
 
     </div><!-- end subsection.components ng-repeat -->

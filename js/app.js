@@ -173,6 +173,7 @@
             // add a new custom field text box immediately after the previous custom field
             components.splice(index+1, 0, {
                 price: 0,
+                quantity: 0,
                 options: [],
                 form_type: "text",
                 duplicate: true,

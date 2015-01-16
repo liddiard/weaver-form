@@ -357,10 +357,11 @@ form#main {
     height: 24px;
     cursor: pointer; }
     form#main .text-option .button.add {
-      display: block; }
+      display: block;
+      margin-top: 0.5em; }
     form#main .text-option .button.delete {
       display: inline;
-      vertical-align: top; }
+      vertical-align: sub; }
   form#main .incrementor {
     display: inline-block;
     margin: 0.5em;
