@@ -39,8 +39,6 @@
             }
         };
         this.section = 0; // currently displayed section
-        this.hasAcknowledgedBaseChangeWarning = false; // has the user already acknowledged a
-            // warning to changing the form's base options? see "confirmBaseChange" method below.
         this.visualEditorOpen = false; // is the visual editor currently being displayed?
 
 
@@ -76,18 +74,6 @@
                     return false;
             }
             return true;
-        };
-        this.confirmBaseChange = function($event) {
-            // pop up a confirmation dialog to confirm that the user is making a
-            // change to the barn's base options which will require reloading
-            // form additions, thereby clearing their current selection of additions.
-            if (form.validBaseOptions() && !form.hasAcknowledgedBaseChangeWarning) {
-                var ok = confirm("You are about to modify this structure's base options. Doing so will reset any options currently selected in subsequent sections of the form.\n\nAre you sure you wish to proceed?");
-                if (ok)
-                    form.hasAcknowledgedBaseChangeWarning = true;
-                else
-                    $event.preventDefault();
-            }
         };
         this.validBaseOptions = function() {
             // checks if the base options a user has selected on the first screen
@@ -144,12 +130,11 @@
             // assigns a successful response to the form.additions variable
             // and makes an additional call to form.calculatePrice.
             var params = {
-                len: form.options.size.len,
-                width: form.options.size.width,
-                style: form.options.style,
-                feature: form.options.feature
+                options: form.options,
+                additions: form.additions,
+                fees: form.fees
             };
-            $http.jsonp(form.BASE_URL + 'new_components/?callback=JSON_CALLBACK', {params: params}).success(function(data){
+            $http.post(form.BASE_URL + 'components/', {data: params}).success(function(data){
                 form.additions = data;
                 form.calculatePrice();
             });
@@ -270,7 +255,7 @@
             // new watch on solely the feature and style keys of the base options.
             $scope.$watch(
                 function(scope) { return form.options.feature + form.options.style },
-                form.getPrices
+                form.getAdditions
             );
             clearAllBaseOptionsWatch();
         }

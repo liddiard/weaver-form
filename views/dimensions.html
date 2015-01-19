@@ -10,7 +10,7 @@
 				   name="barn_styles"
 				   id="{{style.name}}"
 				   value="{{style.name}}"/>
-			<label for="{{style.name}}" ng-mousedown="form.confirmBaseChange($event)">
+			<label for="{{style.name}}">
 				<img ng-src="{{form.BASE_URL + style.url}}"/>
 			</label>
 		</div>
@@ -20,7 +20,7 @@
 	    <option disabled value="">-- choose dimensions --</option>
 	</select>
 
-	<select ng-mousedown="form.confirmBaseChange($event)" ng-show="form.requiresFeature(form.options.style)" name="feature" ng-model="form.options.feature" ng-options="feature for feature in form.features">
+	<select ng-show="form.requiresFeature(form.options.style)" name="feature" ng-model="form.options.feature" ng-options="feature for feature in form.features">
 	    <option disabled value="">-- choose a feature --</option>
 	</select>
 
